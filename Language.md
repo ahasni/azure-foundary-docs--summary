@@ -80,6 +80,8 @@ Azure Language consolidates **Text Analytics**, **QnA Maker**, and **LUIS**. Exi
 
 # REST API
 
+*{Endpoint}* : The Cognitive Services endpoint, including protocol and hostname (for example, https://RESOURCE_NAME.cognitiveservices.azure.com).
+
 ## Analyze Conversations Endpoint 
 
 ```
