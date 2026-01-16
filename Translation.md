@@ -108,4 +108,95 @@ Response Body :
 
 ]
 ```
+## Dictionary Lookup Endpoint
+This example shows how to look up alternative translations in Spanish of the English term *fly*
+```bash
+curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
+```
+The following limitations apply to request body:
 
+    The array can have at most 10 elements.
+    The text value of an array element can't exceed 100 characters including spaces.
+
+The response body (abbreviated for clarity) is:
+
+```json
+[
+    {
+        "normalizedSource":"fly",
+        "displaySource":"fly",
+        "translations":[
+            {
+                "normalizedTarget":"volar",
+                "displayTarget":"volar",
+                "posTag":"VERB",
+                "confidence":0.4081,
+                "prefixWord":"",
+                "backTranslations":[
+                    {"normalizedText":"fly","displayText":"fly","numExamples":15,"frequencyCount":4637},
+                    {"normalizedText":"flying","displayText":"flying","numExamples":15,"frequencyCount":1365},
+                    {"normalizedText":"blow","displayText":"blow","numExamples":15,"frequencyCount":503},
+                    {"normalizedText":"flight","displayText":"flight","numExamples":15,"frequencyCount":135}
+                ]
+            },
+            {
+                "normalizedTarget":"mosca",
+                "displayTarget":"mosca",
+                "posTag":"NOUN",
+                "confidence":0.2668,
+                "prefixWord":"",
+                "backTranslations":[
+                    {"normalizedText":"fly","displayText":"fly","numExamples":15,"frequencyCount":1697},
+                    {"normalizedText":"flyweight","displayText":"flyweight","numExamples":0,"frequencyCount":48},
+                    {"normalizedText":"flies","displayText":"flies","numExamples":9,"frequencyCount":34}
+                ]
+            },
+            //
+            // ...list abbreviated for documentation clarity
+            //
+        ]
+    }
+]
+```
+## Dictionary Examples Endpoint
+
+Provides examples that show how terms in the dictionary are used in context. This operation is used in tandem with Dictionary lookup.
+
+```bash
+curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
+```
+The following limitations apply:
+
+    The array can have at most 10 elements.
+    The text value of an array element can't exceed 100 characters including spaces.
+
+The response body (abbreviated for clarity) is:
+```json
+[
+    {
+        "normalizedSource":"fly",
+        "normalizedTarget":"volar",
+        "examples":[
+            {
+                "sourcePrefix":"They need machines to ",
+                "sourceTerm":"fly",
+                "sourceSuffix":".",
+                "targetPrefix":"Necesitan máquinas para ",
+                "targetTerm":"volar",
+                "targetSuffix":"."
+            },
+            {
+                "sourcePrefix":"That should really ",
+                "sourceTerm":"fly",
+                "sourceSuffix":".",
+                "targetPrefix":"Eso realmente debe ",
+                "targetTerm":"volar",
+                "targetSuffix":"."
+            },
+            //
+            // ...list abbreviated for documentation clarity
+            //
+        ]
+    }
+]
+```
