@@ -78,6 +78,33 @@ Customizable features support model training, while preconfigured features do no
 ## Migration
 Azure Language consolidates **Text Analytics**, **QnA Maker**, and **LUIS**. Existing workloads can be migrated using the Azure Language migration guidance.
 
+# REST API
+
+## Analyze Conversations Endpoint 
+
+```
+POST {Endpoint}/language/:analyze-conversations?api-version=2024-11-01
+```
+## Analyze Text Endpoint
+
+```
+POST {Endpoint}/language/:analyze-text?api-version=2025-11-01
+```
+
+## Question Answering - Get Answers Endpoint
+
+Answers the specified question using your knowledge base.
+```
+POST {Endpoint}/language/:query-knowledgebases?api-version=2023-04-01&projectName={projectName}&deploymentName={deploymentName}
+```
+## Question Answering - Get Answers From Text Endpoint
+Answers the specified question using the provided text in the body.
+```
+POST {Endpoint}/language/:query-text?api-version=2023-04-01
+```
+
+#Python SDK
+
 ## Custom Question Answering Example
 
 ```python
