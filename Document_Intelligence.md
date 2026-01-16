@@ -80,6 +80,8 @@ Azure Document Intelligence enables scalable, secure, and intelligent document p
 
 # REST API
 
+*{endpoint}* :  The Cognitive Services endpoint, including protocol and hostname (for example, https://RESOURCE_NAME.cognitiveservices.azure.com).
+
 ## Analyze Batch Documents Endpoint
 
 Analyzes batch documents with document model.
