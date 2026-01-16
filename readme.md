@@ -4,35 +4,35 @@ This repository contains documentation covering core AI capabilities, services, 
 
 ## 📘 Core Documentation
 
-- **[Foundry](Foundry.md)**  
+- **[Foundry](/Foundry.md)**  
   Overview of the AI Foundry platform, including architecture, deployment concepts, and foundational services.
 
-- **[Agents](Agents.md)**  
+- **[Agents](/Agents.md)**  
   Describes AI agents, their roles, orchestration, and how they interact with tools and data.
 
-- **[Language](Language.md)**  
+- **[Language](/Language.md)**  
   Covers language models, text generation, understanding, translation, and conversational AI capabilities.
 
-- **[Vision](Vision.md)**  
+- **[Vision](/Vision.md)**  
   Documentation for image and video understanding, including object detection, image analysis, and visual reasoning.
 
-- **[Speech](Speech.md)**  
+- **[Speech](/Speech.md)**  
   Details speech-related capabilities such as speech-to-text, text-to-speech, and audio processing.
 
 ## 🧠 Intelligence & Understanding
 
-- **[Content Understanding](Content_understanding.md)**  
+- **[Content Understanding](/Content_understanding.md)**  
   Explains how structured and unstructured content is analyzed, classified, and enriched.
 
-- **[Document Intelligence](Document_Intelligence.md)**  
+- **[Document Intelligence](/Document_Intelligence.md)**  
   Focuses on extracting insights from documents, including OCR, form recognition, and layout analysis.
 
-- **[AI Search](AI_Search.md)**  
+- **[AI Search](/AI_Search.md)**  
   Covers AI-powered search, retrieval-augmented generation (RAG), and semantic search techniques.
 
 ## 🔐 Safety & Governance
 
-- **[Content Safety](Content_Safety.md)**  
+- **[Content Safety](/Content_Safety.md)**  
   Describes content moderation, filtering, and safety mechanisms to ensure responsible AI usage.
 
 ---
