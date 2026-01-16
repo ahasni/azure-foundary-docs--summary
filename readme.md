@@ -44,3 +44,5 @@ This repository contains documentation covering core Azure AI capabilities, serv
 > [Microsoft Foundry Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-foundry?view=foundry-classic)
 >
 > This document can be used as a study summary for the Azure AI Engineer certification (AI-102).
+>
+> All source code examples in this document are written in Python.
