@@ -78,6 +78,41 @@ Azure Document Intelligence consolidates and evolves earlier document analysis s
 ## Summary
 Azure Document Intelligence enables scalable, secure, and intelligent document processing by combining OCR, layout understanding, prebuilt models, and custom AI training—all integrated into Microsoft Foundry and AI agent workflows.
 
+# REST API
+
+## Analyze Batch Documents Endpoint
+
+Analyzes batch documents with document model.
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyzeBatch?api-version=2024-11-30
+```
+With optional parameters: 
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyzeBatch?api-version=2024-11-30&pages={pages}&locale={locale}&stringIndexType={stringIndexType}&features={features}&queryFields={queryFields}&outputContentFormat={outputContentFormat}&output={output}
+```
+
+## Analyze Document From Stream Endpoint
+
+Analyzes document with document model.
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyze?api-version=2024-11-30
+```
+With optional parameters: 
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyze?api-version=2024-11-30&pages={pages}&locale={locale}&stringIndexType={stringIndexType}&features={features}&queryFields={queryFields}&outputContentFormat={outputContentFormat}&output={output}
+```
+
+## Analyze Document Endpoint
+
+Analyzes document with document model.
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyze?_overload=analyzeDocument&api-version=2024-11-30
+```
+With optional parameters: 
+```
+POST {endpoint}/documentintelligence/documentModels/{modelId}:analyze?_overload=analyzeDocument&api-version=2024-11-30&pages={pages}&locale={locale}&stringIndexType={stringIndexType}&features={features}&queryFields={queryFields}&outputContentFormat={outputContentFormat}&output={output}
+```
+
 ## Layout modele Example 
 
 ```bash
