@@ -331,16 +331,6 @@ for page in result.pages:
 
 ---
 
-If you want, I can next:
-
-* Show a **multi-step agent example**
-* Add **evaluation + tracing code**
-* Provide a **clean project template**
-* Explain **how to deploy this in Azure (App Service / AKS)**
-
-
-## Speech Endpoints
-
 | Foundry Tool                 | Endpoint |
 |-----------------------------|----------|
 | Speech to Text (Standard)   | `https://<YOUR-RESOURCE-REGION>.stt.speech.microsoft.com` |
