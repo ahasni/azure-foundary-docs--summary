@@ -55,6 +55,38 @@ To be analyzed by Azure Vision, images must:
 ## Key Takeaway
 Azure Vision enables scalable, AI-powered image understanding for text extraction, visual analysis, facial recognition, and digital asset management—making it a foundational service for vision-enabled applications.
 
+# REST API 
+
+## Face Detection Operations - Detect Endpoint
+
+```
+POST {endpoint}/face/{apiVersion}/detect
+```
+With optional parameters: 
+
+```
+POST {endpoint}/face/{apiVersion}/detect?_overload=detect&detectionModel={detectionModel}&recognitionModel={recognitionModel}&returnFaceId={returnFaceId}&returnFaceAttributes={returnFaceAttributes}&returnFaceLandmarks={returnFaceLandmarks}&returnRecognitionModel={returnRecognitionModel}&faceIdTimeToLive={faceIdTimeToLive}
+```
+
+## Face Recognition Operations - Find Similar From Large Face List Endpoint
+
+```
+POST {endpoint}/face/{apiVersion}/findsimilars
+```
+
+## Face Recognition Operations - Verify Face To Face Endpoint
+
+Verify whether two faces belong to a same person.
+```
+POST {endpoint}/face/{apiVersion}/verify
+```
+## Face Recognition Operations - Identify From Large Person Group Endpoint
+
+```
+POST {endpoint}/face/{apiVersion}/identify
+```
+
+# Python SDK
 
 ## OCR Read (v3.2 GA)Example
 
