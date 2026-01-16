@@ -107,6 +107,35 @@ Azure AI Content Safety offers two pricing tiers:
 ## Key Takeaway
 Azure AI Content Safety provides scalable, configurable, and enterprise-ready content moderation for text, images, and AI workflows—combining powerful APIs with a no-code studio for fast adoption and ongoing optimization.
 
+# REST API
+
+**endpoint : (string, required): The Cognitive Services endpoint, including protocol and hostname (for example, https://<resource-name>.cognitiveservices.azure.com).
+
+## Analyze Image Endpoint 
+
+```
+POST {endpoint}/contentsafety/image:analyze?api-version=2024-09-01
+```
+
+## Analyze Text Endpoint
+
+```
+POST {endpoint}/contentsafety/text:analyze?api-version=2024-09-01
+```
+
+## Detect Text Protected Material Endpoint
+
+```
+POST {endpoint}/contentsafety/text:detectProtectedMaterial?api-version=2024-09-01
+```
+
+## Shield Prompt Endpoint
+
+```
+POST {endpoint}/contentsafety/text:shieldPrompt?api-version=2024-09-01
+```
+
+# Python SDK
 
 ## Analys Text Content Example
 
