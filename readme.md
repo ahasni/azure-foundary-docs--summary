@@ -1,4 +1,4 @@
-# Project Documentation Overview
+# Azure Foundry Services Summary
 
 This repository contains documentation covering core Azure AI capabilities, services, and safety considerations. Below is a brief overview of each document and its purpose.
 
