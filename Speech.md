@@ -72,6 +72,30 @@ Microsoft uses Speech across products like Teams (captioning), Office (dictation
 ## Key Takeaway
 Azure Speech enables scalable, customizable, and multilingual speech experiences—from transcription and translation to advanced AI-powered voice interactions—across cloud, edge, and enterprise environments.
 
+# Rest API
+
+## Speech to Text from file Endpoint
+
+```
+curl --location --request POST "https://%SPEECH_REGION%.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed" ^
+--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
+--header "Content-Type: audio/wav" ^
+--data-binary "@YourAudioFile.wav"
+```
+
+## Text to Speech to a file Endpoint
+
+```
+curl --location --request POST "https://%SPEECH_REGION%.tts.speech.microsoft.com/cognitiveservices/v1" ^
+--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
+--header "Content-Type: application/ssml+xml" ^
+--header "X-Microsoft-OutputFormat: audio-16khz-128kbitrate-mono-mp3" ^
+--header "User-Agent: curl" ^
+--data-raw "<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='en-US-Ava:DragonHDLatestNeural'>my voice is my passport verify me</voice></speak>" --output output.mp3
+```
+
+# Python SDK
+
 ## Speech to Text Example
 
 ```python
