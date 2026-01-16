@@ -93,6 +93,24 @@ POST {endpoint}/face/{apiVersion}/identify
 POST /imageanalysis:analyze?api-version=2023-04-01-preview
 ```
 
+## OCR Read Endpoint
+```
+POST {Endpoint}/vision/v3.1/read/analyze
+```
+## Tag Image Endpoint
+This operation generates a list of words, or tags, that are relevant to the content of the supplied image. The Computer Vision API can return tags based on objects, living beings, scenery or actions found in images. 
+
+```
+POST {Endpoint}/vision/v3.1/tag
+```
+
+## Detect Objects Endpoint
+
+Performs object detection on the specified image. Two input methods are supported -- (1) Uploading an image or (2) specifying an image URL.
+```
+POST {Endpoint}/vision/v3.1/detect
+```
+
 # Python SDK
 
 ## OCR Read (v3.2 GA)Example
