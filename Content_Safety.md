@@ -109,7 +109,7 @@ Azure AI Content Safety provides scalable, configurable, and enterprise-ready co
 
 # REST API
 
-**endpoint** : (string, required): The Cognitive Services endpoint, including protocol and hostname (for example, https://<resource-name>.cognitiveservices.azure.com).
+*{endpoint}* : (string, required): The Cognitive Services endpoint, including protocol and hostname (for example, https://<resource-name>.cognitiveservices.azure.com).
 
 ## Analyze Image Endpoint 
 
