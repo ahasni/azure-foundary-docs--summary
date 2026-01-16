@@ -1,3 +1,155 @@
+
+## What Is Microsoft Foundry?
+
+> **Note**  
+> This document was created with the help of ChatGPT and is based on content from the following source:  
+> [Microsoft Foundry Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-foundry?view=foundry-classic)  
+> This refers to the **Microsoft Foundry (classic) portal**.  
+> 🔄 Switch to the Microsoft Foundry (new) documentation if you're using the new portal.
+
+Microsoft Foundry is a **unified Azure platform-as-a-service** (PaaS) for enterprise AI operations, model building, and application development. It combines production-grade infrastructure with developer-friendly interfaces, allowing developers to focus on building applications rather than managing infrastructure.
+
+Microsoft Foundry unifies **agents, models, and tools** under a single management system with enterprise-readiness capabilities, including tracing, monitoring, evaluations, and customizable configurations. The platform provides **streamlined management** through unified **Role-based Access Control (RBAC)**, networking, and policies under one Azure resource provider namespace.
+
+> **Tip:** Azure AI Foundry is now Microsoft Foundry. Screenshots in documentation are being updated.
+
+---
+
+## Microsoft Foundry Portals
+
+There are **two portals** for Microsoft Foundry:
+
+| Portal | Banner Display | When to Use |
+|--------|----------------|-------------|
+| Microsoft Foundry (classic) | – | Use when working with multiple resource types: Azure OpenAI, Foundry resources, hub-based projects, or Foundry projects. |
+| Microsoft Foundry (new) | – | Use for a seamless experience combining simplicity with secure tools to build and manage multi-agent applications. Only Foundry projects are visible. |
+
+> **Tip:** All links open the portal version you last used.
+
+---
+
+## Microsoft Foundry (classic)
+
+Designed for developers to:
+
+- Build generative AI applications and AI agents on an **enterprise-grade platform**
+- Explore, build, test, and deploy using AI models and tools grounded in **responsible AI practices**
+- Collaborate throughout the full **application development lifecycle**
+- Work across **model providers** with a consistent API
+
+Microsoft Foundry facilitates **scalability**, turning proofs of concept into production applications, with **continuous monitoring and refinement** for long-term success.
+
+---
+
+## Foundry Projects
+
+A **Foundry project** is the primary workspace for development:
+
+- Can be accessed via the **Foundry portal** or SDK
+- Provides **self-serve capabilities** to create new environments for prototyping and exploration
+- Acts as a **secure unit of isolation** for collaboration, sharing file storage, conversation threads, and search indexes
+- Supports **bring-your-own Azure resources** for compliance and sensitive data control
+
+---
+
+## Microsoft Foundry API and SDKs
+
+The Foundry API enables building **agentic applications** with a consistent contract across model providers. SDKs simplify integration into applications.
+
+**Available SDKs:**
+- Python
+- C#
+- JavaScript/TypeScript (preview)
+- Java (preview)
+
+The **Foundry VS Code Extension** helps developers explore models and build agents directly in their development environment.
+
+---
+
+## Types of Projects
+
+Classic Foundry supports **two project types**:
+
+1. **Foundry Project**  
+   - Managed under a Microsoft Foundry resource  
+   - Container for access management, data upload, integration, and monitoring  
+   - Recommended for building agents and working with models
+
+2. **Hub-Based Project**  
+   - Hosted by a Microsoft Foundry hub  
+   - Suitable if your organization has administrative hubs  
+   - New default hub is automatically created if working independently
+
+> **Note:** New agents and model-centric capabilities are only available on **Foundry projects**.
+
+**Feature Comparison:**
+
+| Capability | Foundry Project | Hub-Based Project |
+|------------|----------------|-----------------|
+| Agents | ✅ GA | ✅ Preview only |
+| Azure Models (OpenAI, DeepSeek, xAI, etc.) | ✅ | Via connections |
+| Partner/Community Models (Stability, Cohere, etc.) | ✅ | Via connections |
+| Managed compute deployments (e.g. HuggingFace) | ✅ | – |
+| Foundry SDK & API | ✅ | Limited |
+| OpenAI SDK & API | ✅ | Via connections |
+| Evaluations | ✅ Preview | ✅ |
+| Playgrounds | ✅ | ✅ |
+| Content Understanding | ✅ | ✅ |
+| Model Router | ✅ | ✅ |
+| Datasets | ✅ | ✅ |
+| Indexes | ✅ | ✅ |
+| Project Files API | ✅ | Limited |
+| Project-Level Isolation | ✅ | Limited |
+| Bring-Your-Own Key Vault | ✅ | ✅ |
+| Bring-Your-Own Storage | ✅ | ✅ |
+| Prompt Flow | ✅ | – |
+
+---
+
+## Identifying Your Project Type
+
+- **Breadcrumb Navigation**  
+  - Foundry project: displays `(Foundry)` on the second line  
+  - Hub-based project: displays `(Hub)` on the second line
+
+- **All Resources Page**  
+  - Foundry project: `(Foundry)` as parent resource  
+  - Hub-based project: `(Hub)` as parent resource
+
+---
+
+## Navigating the Foundry (classic) Portal
+
+Use **breadcrumbs** for quick navigation among resources.  
+The **left pane** is organized around development goals:
+
+1. **Define and Explore** – Define goals, explore models and services
+2. **Build and Customize** – Build solutions, customize models, fine-tune, or ground in your data
+3. **Observe and Improve** – Monitor, debug, evaluate, and integrate safety/security before production
+
+**Admins** can manage resources, quotas, access, and permissions via the **Management Center**.
+
+---
+
+## Customizing the Left Pane
+
+- Pin/unpin items to show frequently used tools
+- Each project has its own left pane; changes are **user-specific**
+- Access additional items via `...More` menu
+
+---
+
+## Management Center
+
+The Management Center streamlines governance by allowing admins to manage:
+
+- Projects and resources
+- Quotas and usage metrics
+- Access and permissions
+
+For more information, see **Management Center overview**.
+
+
 Below are **practical Python code examples** with **step-by-step explanations**, showing how a developer would actually use **Microsoft Foundry** in real workflows.
 
 ---
