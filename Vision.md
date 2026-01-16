@@ -88,6 +88,11 @@ POST {endpoint}/face/{apiVersion}/verify
 POST {endpoint}/face/{apiVersion}/identify
 ```
 
+## Image Analysis - Analyze Image Endpoint
+```
+POST /imageanalysis:analyze?api-version=2023-04-01-preview
+```
+
 # Python SDK
 
 ## OCR Read (v3.2 GA)Example
