@@ -5,7 +5,7 @@ Microsoft Foundry is a **unified Azure platform-as-a-service** (PaaS) for enterp
 
 Microsoft Foundry unifies **agents, models, and tools** under a single management system with enterprise-readiness capabilities, including tracing, monitoring, evaluations, and customizable configurations. The platform provides **streamlined management** through unified **Role-based Access Control (RBAC)**, networking, and policies under one Azure resource provider namespace.
 
-> **Tip:** Azure AI Foundry is now Microsoft Foundry. Screenshots in documentation are being updated.
+> **Tip:** Azure AI Foundry is now Microsoft Foundry.
 
 ---
 
