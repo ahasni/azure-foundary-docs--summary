@@ -1,6 +1,6 @@
 # Project Documentation Overview
 
-This repository contains documentation covering core AI capabilities, services, and safety considerations. Below is a brief overview of each document and its purpose.
+This repository contains documentation covering core Azure AI capabilities, services, and safety considerations. Below is a brief overview of each document and its purpose.
 
 ## 📘 Core Documentation
 
