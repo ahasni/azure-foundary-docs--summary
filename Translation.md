@@ -200,3 +200,28 @@ The response body (abbreviated for clarity) is:
     }
 ]
 ```
+
+## Translate Document (Asynchron)
+```
+POST https://{your-document-translation-endpoint}/translator/document:translate?api-version=2024-05-01&sourceLanguage=en&targetLanguage=fr
+```
+
+# Python SDK
+
+```bash
+pip install azure-ai-translation-text==1.0.0b1
+```
+
+```python
+from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
+from azure.ai.translation.text.models import InputTextItem
+from azure.core.exceptions import HttpResponseError
+
+key = "<your-key>"
+endpoint = "<your-endpoint>"
+region = "<region>"
+
+
+credential = TranslatorCredential(key, region)
+text_translator = TextTranslationClient(endpoint=endpoint, credential=credential)
+```
