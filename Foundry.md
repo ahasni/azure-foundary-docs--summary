@@ -1,12 +1,6 @@
 
 ## What Is Microsoft Foundry?
 
-> **Note**  
-> This document was created with the help of ChatGPT and is based on content from the following source:  
-> [Microsoft Foundry Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-foundry?view=foundry-classic)  
-> This refers to the **Microsoft Foundry (classic) portal**.  
-> 🔄 Switch to the Microsoft Foundry (new) documentation if you're using the new portal.
-
 Microsoft Foundry is a **unified Azure platform-as-a-service** (PaaS) for enterprise AI operations, model building, and application development. It combines production-grade infrastructure with developer-friendly interfaces, allowing developers to focus on building applications rather than managing infrastructure.
 
 Microsoft Foundry unifies **agents, models, and tools** under a single management system with enterprise-readiness capabilities, including tracing, monitoring, evaluations, and customizable configurations. The platform provides **streamlined management** through unified **Role-based Access Control (RBAC)**, networking, and policies under one Azure resource provider namespace.
