@@ -57,6 +57,8 @@ Azure Vision enables scalable, AI-powered image understanding for text extractio
 
 # REST API 
 
+*{endpoint}* :  The Cognitive Services endpoint, including protocol and hostname (for example, https://RESOURCE_NAME.cognitiveservices.azure.com).
+
 ## Face Detection Operations - Detect Endpoint
 
 ```
