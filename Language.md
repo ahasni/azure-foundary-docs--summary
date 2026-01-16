@@ -87,11 +87,30 @@ Azure Language consolidates **Text Analytics**, **QnA Maker**, and **LUIS**. Exi
 ```
 POST {Endpoint}/language/:analyze-conversations?api-version=2024-11-01
 ```
+The input for a conversation language understanding task.
+
+| Name | Required | Type | Description |
+|------|----------|------|-------------|
+| **analysisInput** | Yes | `ConversationAnalysisOptions` | The input `ConversationItem` and its optional parameters. |
+| **kind** | Yes | `string` (`Conversation`) | The base class that identifies this as a conversation input task. |
+| **parameters** | Yes | `ConversationTaskParameters` | Input parameters required for a conversation language understanding task. |
+
 ## Analyze Text Endpoint
 
 ```
 POST {Endpoint}/language/:analyze-text?api-version=2025-11-01
 ```
+## Analyze Text Input Types
+
+| Name                                   | Description |
+|----------------------------------------|-------------|
+| **AnalyzeTextEntityLinkingInput**       | Contains the analyze text entity linking input. |
+| **AnalyzeTextEntityRecognitionInput**  | Represents the analyze text entity recognition task request. |
+| **AnalyzeTextKeyPhraseExtractionInput**| Contains the analyze text key phrase extraction task input. |
+| **AnalyzeTextLanguageDetectionInput**  | Contains the language detection document analysis task input. |
+| **AnalyzeTextPiiEntitiesRecognitionInput** | Contains the analyze text PII entity recognition task input. |
+| **AnalyzeTextSentimentAnalysisInput**  | Contains the analyze text sentiment analysis task input. |
+
 
 ## Question Answering - Get Answers Endpoint
 
