@@ -75,6 +75,67 @@ Azure Document Intelligence consolidates and evolves earlier document analysis s
 
 ---
 
+## Azure Document Intelligence — Foundry Tools: Service Quotas and Limits
+
+This summary covers quotas and limits for **Azure Document Intelligence v4.0 (GA)** in Foundry Tools across all pricing tiers (F0 and S0), including best practices to avoid request throttling.
+
+---
+
+### Supported Document Types
+
+| Document Type | Read | Layout | Prebuilt Models | Custom Models | Add-on Capabilities |
+|---------------|------|--------|----------------|---------------|------------------|
+| PDF | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ |
+| Images (JPEG, PNG, BMP, TIFF, HEIF) | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ |
+| Microsoft Office (DOCX, PPTX, XLS) | ✔️ | ✔️ | ✖️ | ✖️ | ✖️ |
+
+> ✔️ = supported, ✖️ = not supported
+
+**v4.0 restrictions:**
+- Angle, width/height, and units not supported
+- Bounding polygons or regions not supported
+- `lines` object not supported
+
+**Supported tools:**  
+Document Intelligence SDKs, REST API, Studio v3.0
+
+---
+
+### General Quotas
+
+| Limit | Free (F0) | Standard (S0) | Adjustable |
+|-------|-----------|---------------|------------|
+| Analyze transactions/sec | 1 | 15 | No / Yes |
+| Get operations/sec | 1 | 50 | No / Yes |
+| Model management operations/sec | 1 | 5 | No / Yes |
+| List operations/sec | 1 | 10 | No / Yes |
+| Max document size | 4 MB | 500 MB | No |
+| Max pages (analysis) | 2 | 2,000 | No |
+| Max size labels file | 10 MB | 10 MB | No |
+| Max OCR JSON response | 500 MB | 500 MB | No |
+| Max template models | 500 | 5,000 | No |
+| Max neural models | 100 | 500 | No |
+
+---
+
+### Custom Model Usage
+
+| Limit | Free (F0) | Standard (S0) | Adjustable |
+|-------|-----------|---------------|------------|
+| Compose model limit | 5 | 500 | No |
+| Training dataset size *Neural & Generative* | 1 GB | 1 GB | No |
+| Training dataset size *Template* | 50 MB | 50 MB | No |
+| Max pages (Training) *Template* | 500 | 500 | No |
+| Max pages (Training) *Neural & Generative* | 50,000 | 50,000 | No |
+| Custom neural model training | 10 h/month | No limit (pay by hour, 10 free hours/month) | No / Yes |
+| Max pages (Training) *Classifier* | 25,000 | 25,000 | No |
+| Max document types/classes *Classifier* | 1,000 | 1,000 | No |
+| Training dataset size *Classifier* | 1 GB | 2 GB | No |
+| Min samples per class *Classifier* | 5 | 5 | No |
+
+
+---
+
 ## Summary
 Azure Document Intelligence enables scalable, secure, and intelligent document processing by combining OCR, layout understanding, prebuilt models, and custom AI training—all integrated into Microsoft Foundry and AI agent workflows.
 
