@@ -133,17 +133,17 @@ This summary outlines **character and array limits** for text and document trans
 
 Returns a list of languages supported by Translate, Transliterate, and Dictionary Lookup operations. This request doesn't require authentication; just copy and paste the following GET request into your favorite REST API tool or browser:
 
-```
+```http
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
 
 ## Translate to multiple languages Endpoint
 
-```
+```bash
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 The response body is:
-```
+```json
 [
     {
         "translations":[
@@ -156,7 +156,7 @@ The response body is:
 
 ## Transliterate Endpoint
 The Text transliteration API maps your source language script or alphabet to a target language script or alphabet.
-```
+```http
 POST https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 ```
 ### Response Body
@@ -176,7 +176,7 @@ A successful response returns a JSON array containing one result for each elemen
 ```
 
 ## Detect Endpoint
-```
+```http
 POST https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ```
 Request Body :
@@ -303,7 +303,7 @@ The response body (abbreviated for clarity) is:
 ```
 
 ## Translate Document (Asynchron)
-```
+```http
 POST https://{your-document-translation-endpoint}/translator/document:translate?api-version=2024-05-01&sourceLanguage=en&targetLanguage=fr
 ```
 
