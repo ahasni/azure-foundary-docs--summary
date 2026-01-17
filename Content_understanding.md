@@ -72,57 +72,48 @@
 - Can describe attributes such as expressions and facial features, and identify prominent individuals when enabled.
 
 ---
-## Summary: Batch document supported formats
 
-The Document Translation service supports batch translation for a wide range of document and data formats.
+## Azure Content Understanding — Foundry Tools: Service Quotas and Limits
 
-- **Supported document types**
-  - PDF (with OCR for scanned documents)
-  - Microsoft Office files (Word, Excel, PowerPoint, Outlook)
-  - OpenDocument formats (ODT, ODS, ODP)
-  - Web and markup formats (HTML, MHTML, Markdown)
-  - Data and text formats (CSV, TSV/TAB, TXT, RTF)
-  - Images (JPEG, PNG, BMP, WebP – preview)
-  - Localization formats (XLIFF)
+Azure Content Understanding in Foundry Tools provides content analysis with defined **quotas and limits** for documents, images, audio, and video.
 
-- **Legacy format conversion**
-  - Some source formats are automatically converted:
-    - `.doc`, `.odt`, `.rtf` → `.docx`
-    - `.xls`, `.ods` → `.xlsx`
-    - `.ppt`, `.odp` → `.pptx`
+### Resource limits (Standard S0)
+- **Max analyzers:** 100,000
+- **Max analysis/min:** 1,000 pages/images
+- **Audio & Video:** up to 4 hours each
+- **Max operations/min:** 3,000
 
-- **Glossary formats**
-  - Supported glossary files include:
-    - CSV
-    - TSV/TAB
-    - XLIFF (`.xlf`, `.xliff`)
+### Supported generative models
+- **Chat completion:** GPT-4o, GPT-4.1, mini & nano variants
+- **Embeddings:** text-embedding-3-small, text-embedding-3-large, text-embedding-ada-002
 
-Overall, batch document translation enables large-scale multilingual processing while preserving document structure and supporting industry-standard glossary formats.
+### Input file limits
+- **Documents & text:** PDF, Office (docx, xlsx, pptx), TXT, HTML, Markdown, RTF, email, XML  
+  - ≤ 200 MB / ≤ 300 pages or ≤ 1M characters  
+  - **Pro mode (preview):** only PDF, TIFF, images; max 100 MB / 150 pages
+- **Images:** JPEG, PNG, BMP, HEIF/HEIC; ≤ 200 MB, 50×50 to 10,000×10,000 px
+- **Audio:** WAV, MP3, MP4, Opus/OGG, FLAC, WMA, AAC, AMR, 3GP, WebM, M4A, SPX; ≤ 300 MB / 2 h†  
+  - †Supports up to 1 GB / 4 h, faster processing for ≤ 300 MB / ≤ 2 h
+- **Video:** MP4, M4V, FLV, WMV, ASF, AVI, MKV, MOV; min 320×240 px, max 1920×1080 px  
+  - **Direct upload:** ≤ 200 MB / 30 min  
+  - **URL reference:** ≤ 4 GB / 2 h  
+  - Frame sampling: ~1 frame/sec, frames scaled to 512×512 px
 
-## Synchronous document supported formats
+### Field schema limits
+- **Supported field types:** string, date, time, number, integer, boolean
+- **Nested structures:** lists, groups, tables, fixed tables
+- **Max fields:** 1,000 per document/text/image/audio/video
+- **Max classify categories:** 300 per document/text/image/audio/video
+- **Generation methods:** extract, generate, classify
 
-The Document Translation service supports **synchronous translation** for commonly used text, data, web, Office, and localization formats.
+### Knowledge source limits
+- **Training data:** documents only, max 1 GB, 50,000 pages/images
 
-- **Supported document types**
-  - Plain text (`.txt`)
-  - Data formats: CSV (`.csv`), TSV/TAB (`.tsv`, `.tab`)
-  - Web formats: HTML (`.html`, `.htm`), MHTML (`.mhtml`, `.mht`)
-  - Microsoft Office formats:
-    - Word (`.docx`)
-    - Excel (`.xlsx`)
-    - PowerPoint (`.pptx`)
-    - Outlook messages (`.msg`)
-  - Localization formats: XLIFF (`.xlf`, `.xliff`)
-
-- **Glossary formats**
-  - CSV
-  - TSV/TAB
-  - XLIFF (`.xlf`, `.xliff`)
-
-Synchronous translation is optimized for real-time processing of supported file types with standard glossary integration.
-
-
-
+### Segmentation / Classification limits
+- **Category name:** cannot start with `$`
+- **Category name + description:** max 120 characters
+- **Number of categories:** 200 per analyzer (documents), 1 (videos)
+- **Hierarchical classification:** 5 layers (documents), 2 layers (videos)
 
 ## Summary
 Azure Content Understanding provides a unified, AI-powered framework for transforming unstructured and multimodal content into trustworthy, structured outputs. It supports automation, analytics, search, and agent-driven workflows while maintaining enterprise-grade accuracy, transparency, and responsible AI safeguards.
