@@ -72,37 +72,55 @@
 - Can describe attributes such as expressions and facial features, and identify prominent individuals when enabled.
 
 ---
-## Résumé — Azure Content Understanding (Foundry Tools)
+## Summary: Batch document supported formats
 
-Azure Content Understanding, intégré à **Foundry Tools**, fournit des capacités d’analyse de contenu avec des **quotas et limites définis** pour garantir performance et scalabilité.
+The Document Translation service supports batch translation for a wide range of document and data formats.
 
-### Limites générales
-  - Identifiants, champs, URL, descriptions et balises soumis à des longueurs maximales strictes
-  - Jusqu’à **10 balises** par ressource
-  - Noms et valeurs de balises encadrés par des formats autorisés
+- **Supported document types**
+  - PDF (with OCR for scanned documents)
+  - Microsoft Office files (Word, Excel, PowerPoint, Outlook)
+  - OpenDocument formats (ODT, ODS, ODP)
+  - Web and markup formats (HTML, MHTML, Markdown)
+  - Data and text formats (CSV, TSV/TAB, TXT, RTF)
+  - Images (JPEG, PNG, BMP, WebP – preview)
+  - Localization formats (XLIFF)
 
-### Limites des ressources (Standard S0)
-  - Jusqu’à **100 000 analyseurs**
-  - **1 000 pages/images** analysées par minute
-  - Jusqu’à **4 heures d’audio** ou **4 heures de vidéo**
-  - **3 000 opérations par minute**
+- **Legacy format conversion**
+  - Some source formats are automatically converted:
+    - `.doc`, `.odt`, `.rtf` → `.docx`
+    - `.xls`, `.ods` → `.xlsx`
+    - `.ppt`, `.odp` → `.pptx`
 
-### Modèles Foundry pris en charge
-  - Modèles GPT-4o, GPT-4.1 et variantes (mini, nano)
-  - Modèles d’**embeddings** : `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002`
+- **Glossary formats**
+  - Supported glossary files include:
+    - CSV
+    - TSV/TAB
+    - XLIFF (`.xlf`, `.xliff`)
 
-### Limites des fichiers d’entrée
-  - **Documents** : PDF, Office, HTML, TXT, images, e-mails, XML  
-    - Jusqu’à **200 Mo**, **300 pages** ou **1 million de caractères**
-  - **Images** : jusqu’à **10 000 × 10 000 px**
-  - **Audio** : jusqu’à **300 Mo / 2 h** (max théorique 1 Go / 4 h)
-  - **Vidéo** : jusqu’à **1920 × 1080**, formats courants pris en charge
+Overall, batch document translation enables large-scale multilingual processing while preserving document structure and supporting industry-standard glossary formats.
 
-### Téléchargement vidéo
-  - **Chargement direct (API analyzeBinary)** : ≤ 200 Mo / 30 min
-  - **Référence par URL** : jusqu’à **4 Go / 2 h**
+## Synchronous document supported formats
 
-> **Remarque** : le mode **Pro (préversion)** accepte uniquement les PDF, TIFF et images, avec un maximum de **100 Mo et 150 pages**.
+The Document Translation service supports **synchronous translation** for commonly used text, data, web, Office, and localization formats.
+
+- **Supported document types**
+  - Plain text (`.txt`)
+  - Data formats: CSV (`.csv`), TSV/TAB (`.tsv`, `.tab`)
+  - Web formats: HTML (`.html`, `.htm`), MHTML (`.mhtml`, `.mht`)
+  - Microsoft Office formats:
+    - Word (`.docx`)
+    - Excel (`.xlsx`)
+    - PowerPoint (`.pptx`)
+    - Outlook messages (`.msg`)
+  - Localization formats: XLIFF (`.xlf`, `.xliff`)
+
+- **Glossary formats**
+  - CSV
+  - TSV/TAB
+  - XLIFF (`.xlf`, `.xliff`)
+
+Synchronous translation is optimized for real-time processing of supported file types with standard glossary integration.
+
 
 
 
