@@ -78,6 +78,54 @@ Azure Translator can be integrated using:
 
 Overall, synchronous document translation supports commonly used text, data, web, Office, and localization formats, along with standard glossary file types for terminology control.
 
+## Azure Translator — Foundry Tools: Service Limits
+
+This summary outlines **character and array limits** for text and document translation in Azure Translator.
+
+---
+
+### Text Translation
+
+- **Billing:** Based on **character count**, not request frequency.
+- **Request limit:** Each translate request can include **up to 50,000 characters** across all target languages.  
+  *Example:* 3,000 characters to 3 languages = 9,000 characters counted.
+
+---
+
+### Array Element and Character Limits per Operation
+
+| Operation | Max Array Element Size | Max Array Elements | Max Request Size (characters) |
+|-----------|----------------------|------------------|------------------------------|
+| Translate | 50,000 | 1,000 | 50,000 |
+| Transliterate | 5,000 | 10 | 5,000 |
+| Detect | 50,000 | 100 | 50,000 |
+| BreakSentence | 50,000 | 100 | 50,000 |
+| Dictionary Lookup | 100 | 10 | 1,000 |
+| Dictionary Examples | 100 text + 100 translation (200 total) | 10 | 2,000 |
+
+---
+
+### Character Limits per Hour
+
+- Limits depend on your **Translator subscription tier**.
+- Hourly quota should be **evenly consumed**.  
+  *Example:* F0 tier (2M chars/hr) ≈ 33,300 chars/min.
+
+- **Out-of-quota responses** occur if:
+  - Quota is exceeded
+  - Large portion of quota is used too quickly
+
+- **No limit** on concurrent requests
+
+| Tier | Character Limit per Hour |
+|------|-------------------------|
+| F0 | 2 million |
+| S1 | 40 million |
+| S2 / C2 | 40 million |
+| S3 / C3 | 120 million |
+| S4 / C4 | 200 million |
+
+
 
 # REST API
 
