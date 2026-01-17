@@ -108,3 +108,89 @@ Azure Content Understanding, intégré à **Foundry Tools**, fournit des capacit
 
 ## Summary
 Azure Content Understanding provides a unified, AI-powered framework for transforming unstructured and multimodal content into trustworthy, structured outputs. It supports automation, analytics, search, and agent-driven workflows while maintaining enterprise-grade accuracy, transparency, and responsible AI safeguards.
+
+# REST API
+
+## Analyze Endpoint
+
+Extract content and fields from input.
+```
+POST {endpoint}/contentunderstanding/analyzers/{analyzerId}:analyze?api-version=2025-11-01
+```
+With optional parameters: 
+```
+POST {endpoint}/contentunderstanding/analyzers/{analyzerId}:analyze?api-version=2025-11-01&stringEncoding={stringEncoding}&processingLocation={processingLocation}
+```
+### Sample response
+
+#### Status code
+- **202**
+
+#### HTTP headers
+```http
+Operation-Location: https://myendpoint.cognitiveservices.azure.com/contentunderstanding/analyzerResults/3b31320d-8bab-4f88-b19c-2322a7f11034?api-version=2025-11-01
+```
+```json
+{
+  "id": "3b31320d-8bab-4f88-b19c-2322a7f11034",
+  "status": "NotStarted"
+}
+```
+## Get Result Endpoint
+
+Get the result of an analysis operation.
+
+```
+GET {endpoint}/contentunderstanding/analyzerResults/{operationId}?api-version=2025-11-01
+```
+Response body: 
+```
+{
+  "id": "3b31320d-8bab-4f88-b19c-2322a7f11034",
+  "status": "Succeeded",
+  "result": {
+    "analyzerId": "myAnalyzer",
+    "apiVersion": "2025-11-01",
+    "createdAt": "2025-05-01T18:46:36.244Z",
+    "contents": [
+      {
+        "kind": "document",
+        "mimeType": "application/pdf",
+        "markdown": "# CONTOSO\n\n...",
+        "startPageNumber": 1,
+        "endPageNumber": 2,
+        "unit": "inch",
+        "pages": [
+          {
+            "pageNumber": 1,
+            "width": 8.5,
+            "height": 11
+          },
+          {
+            "pageNumber": 2,
+            "width": 8.5,
+            "height": 11
+          }
+        ],
+        "fields": {
+          "Company": {
+            "type": "string",
+            "valueString": "CONTOSO",
+            "spans": [
+              {
+                "offset": 7,
+                "length": 2
+              }
+            ],
+            "confidence": 0.95,
+            "source": "D(1,5,1,7,1,7,1.5,5,1.5)"
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+
+
