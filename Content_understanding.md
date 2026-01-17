@@ -136,6 +136,14 @@ Operation-Location: https://myendpoint.cognitiveservices.azure.com/contentunders
   "status": "NotStarted"
 }
 ```
+## Content Analyzers - Get Operation Status Endpoint
+
+Get the status of an analyzer creation operation.
+
+```http
+GET {endpoint}/contentunderstanding/analyzers/{analyzerId}/operations/{operationId}?api-version=2025-11-01
+```
+
 ## Get Result Endpoint
 
 Get the result of an analysis operation.
@@ -192,5 +200,17 @@ Response body:
 }
 ```
 
+## Content Analyzers - Get Result File Endpoint
+Get a file associated with the result of an analysis operation.
+
+```http
+GET {endpoint}/contentunderstanding/analyzerResults/{operationId}/files/{path}?api-version=2025-11-01
+```
+
+Response:
+
+```json
+"{imageBinary}"
+```
 
 
