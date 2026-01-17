@@ -6,6 +6,9 @@ This repository contains documentation covering core Azure AI capabilities, serv
 
 - **[Foundry](/Foundry.md)**  
   Overview of the AI Foundry platform, including architecture, deployment concepts, and foundational services.
+  
+- **[Translation](/Translation.md)**  
+  Azure Translation Service enables real-time and batch multilingual translation of text and documents via cloud APIs.
 
 - **[Agents](/Agents.md)**  
   Describes AI agents, their roles, orchestration, and how they interact with tools and data.
