@@ -140,11 +140,11 @@ Operation-Location: https://myendpoint.cognitiveservices.azure.com/contentunders
 
 Get the result of an analysis operation.
 
-```
+```http
 GET {endpoint}/contentunderstanding/analyzerResults/{operationId}?api-version=2025-11-01
 ```
 Response body: 
-```
+```json
 {
   "id": "3b31320d-8bab-4f88-b19c-2322a7f11034",
   "status": "Succeeded",
