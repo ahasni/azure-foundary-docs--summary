@@ -26,6 +26,59 @@ Azure Translator can be integrated using:
 - Foundry (classic) portal
 - Custom Translator portal
 
+## Asynchronous (Batch) Document Translation: Supported document and glossary formats
+
+
+- **Batch document formats**
+  - Supports common document types including:
+    - PDF (with OCR for scanned PDFs)
+    - Microsoft Office files (Word, Excel, PowerPoint, Outlook)
+    - OpenDocument formats
+    - Markdown
+    - HTML and MHTML
+    - Images (JPEG, PNG, BMP, WebP – preview)
+    - CSV, TSV/TAB
+    - TXT and RTF
+    - XLIFF
+
+- **Legacy format handling**
+  - Some source formats are converted during translation:
+    - `.doc`, `.odt`, `.rtf` → `.docx`
+    - `.xls`, `.ods` → `.xlsx`
+    - `.ppt`, `.odp` → `.pptx`
+
+- **Glossary formats**
+  - Supported glossary file types:
+    - CSV
+    - TSV/TAB
+    - XLIFF (XLF, XLIFF)
+
+
+## Synchronous document and glossary formats
+
+- **Synchronous document formats**
+  - Supported file types include:
+    - Plain text (`.txt`)
+    - Tab-separated values (`.tsv`, `.tab`)
+    - Comma-separated values (`.csv`)
+    - HTML (`.html`, `.htm`)
+    - MHTML (`.mhtml`, `.mht`)
+    - Microsoft Office formats:
+      - PowerPoint (`.pptx`)
+      - Excel (`.xlsx`)
+      - Word (`.docx`)
+      - Outlook messages (`.msg`)
+    - XML Localization Interchange formats (`.xlf`, `.xliff`)
+
+- **Glossary formats (synchronous)**
+  - Supported glossary file types:
+    - CSV
+    - TSV/TAB
+    - XLIFF (`.xlf`, `.xliff`)
+
+Overall, synchronous document translation supports commonly used text, data, web, Office, and localization formats, along with standard glossary file types for terminology control.
+
+
 # REST API
 
 ## Languages List Endpoint
