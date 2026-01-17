@@ -77,30 +77,30 @@
 Azure Content Understanding, intégré à **Foundry Tools**, fournit des capacités d’analyse de contenu avec des **quotas et limites définis** pour garantir performance et scalabilité.
 
 ### Limites générales
-    - Identifiants, champs, URL, descriptions et balises soumis à des longueurs maximales strictes
-    - Jusqu’à **10 balises** par ressource
-    - Noms et valeurs de balises encadrés par des formats autorisés
+  - Identifiants, champs, URL, descriptions et balises soumis à des longueurs maximales strictes
+  - Jusqu’à **10 balises** par ressource
+  - Noms et valeurs de balises encadrés par des formats autorisés
 
 ### Limites des ressources (Standard S0)
-    - Jusqu’à **100 000 analyseurs**
-    - **1 000 pages/images** analysées par minute
-    - Jusqu’à **4 heures d’audio** ou **4 heures de vidéo**
-    - **3 000 opérations par minute**
+  - Jusqu’à **100 000 analyseurs**
+  - **1 000 pages/images** analysées par minute
+  - Jusqu’à **4 heures d’audio** ou **4 heures de vidéo**
+  - **3 000 opérations par minute**
 
 ### Modèles Foundry pris en charge
-    - Modèles GPT-4o, GPT-4.1 et variantes (mini, nano)
-    - Modèles d’**embeddings** : `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002`
+  - Modèles GPT-4o, GPT-4.1 et variantes (mini, nano)
+  - Modèles d’**embeddings** : `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002`
 
 ### Limites des fichiers d’entrée
-    - **Documents** : PDF, Office, HTML, TXT, images, e-mails, XML  
-      - Jusqu’à **200 Mo**, **300 pages** ou **1 million de caractères**
-    - **Images** : jusqu’à **10 000 × 10 000 px**
-    - **Audio** : jusqu’à **300 Mo / 2 h** (max théorique 1 Go / 4 h)
-    - **Vidéo** : jusqu’à **1920 × 1080**, formats courants pris en charge
+  - **Documents** : PDF, Office, HTML, TXT, images, e-mails, XML  
+    - Jusqu’à **200 Mo**, **300 pages** ou **1 million de caractères**
+  - **Images** : jusqu’à **10 000 × 10 000 px**
+  - **Audio** : jusqu’à **300 Mo / 2 h** (max théorique 1 Go / 4 h)
+  - **Vidéo** : jusqu’à **1920 × 1080**, formats courants pris en charge
 
 ### Téléchargement vidéo
-    - **Chargement direct (API analyzeBinary)** : ≤ 200 Mo / 30 min
-    - **Référence par URL** : jusqu’à **4 Go / 2 h**
+  - **Chargement direct (API analyzeBinary)** : ≤ 200 Mo / 30 min
+  - **Référence par URL** : jusqu’à **4 Go / 2 h**
 
 > **Remarque** : le mode **Pro (préversion)** accepte uniquement les PDF, TIFF et images, avec un maximum de **100 Mo et 150 pages**.
 
