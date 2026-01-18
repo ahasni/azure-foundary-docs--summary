@@ -252,7 +252,7 @@ Agents leverage agentic retrieval to achieve **higher accuracy**, **better conte
 
 # REST API
 
-*{endpoint}* : Project endpoint in the form of: https://<aiservices-id>.services.ai.azure.com/api/projects/<project-name>
+*{endpoint}* : Project endpoint in the form of: https://AI_SERVICE_ID.services.ai.azure.com/api/projects/PROJECT_NAME
 
 ## Create Agent Endpoint
 
