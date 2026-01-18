@@ -194,6 +194,172 @@ When calling Azure AI Search REST APIs, note the following requirements:
 
 Azure AI Search REST APIs enable developers to build powerful search solutions by combining structured indexing, AI enrichment, and secure access control. The data plane APIs focus on indexing and querying, while enterprise-grade security and extensibility make Azure AI Search suitable for production workloads.
 
+# REST API
+
+## Get Indexes List Endpoint
+```http
+@baseUrl = PUT-YOUR-SEARCH-SERVICE-ENDPOINT-HERE
+@token = PUT-YOUR-PERSONAL-IDENTITY-TOKEN-HERE
+
+### List existing indexes by name
+GET {{baseUrl}}/indexes?api-version=2025-09-01  HTTP/1.1
+    Authorization: Bearer {{token}}
+```
+## Create a Search Index Endpoint
+```http
+### Create a new index
+POST {{baseUrl}}/indexes?api-version=2025-09-01  HTTP/1.1
+    Content-Type: application/json
+    Authorization: Bearer {{token}}
+
+    {
+        "name": "hotels-quickstart",  
+        "fields": [
+            {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
+            {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
+            {"name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false, "analyzer": "en.lucene"},
+            {"name": "Category", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true},
+            {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Address", "type": "Edm.ComplexType", 
+                "fields": [
+                {"name": "StreetAddress", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "searchable": true},
+                {"name": "City", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+                {"name": "StateProvince", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+                {"name": "PostalCode", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+                {"name": "Country", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true}
+                ]
+            }
+        ]
+    }
+```
+
+## Load the Index Endpoint
+Newly created indexes are empty. To populate an index and make it searchable, you must upload JSON documents that conform to the index schema.
+```http
+### Upload documents
+POST {{baseUrl}}/indexes/hotels-quickstart/docs/index?api-version=2025-09-01  HTTP/1.1
+    Content-Type: application/json
+    Authorization: Bearer {{token}}
+
+    {
+        "value": [
+        {
+        "@search.action": "upload",
+        "HotelId": "1",
+        "HotelName": "Stay-Kay City Hotel",
+        "Description": "This classic hotel is fully-refurbished and ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+        "Category": "Boutique",
+        "Tags": [ "view", "air conditioning", "concierge" ],
+        "ParkingIncluded": false,
+        "LastRenovationDate": "2022-01-18T00:00:00Z",
+        "Rating": 3.60,
+        "Address": 
+            {
+            "StreetAddress": "677 5th Ave",
+            "City": "New York",
+            "StateProvince": "NY",
+            "PostalCode": "10022",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "2",
+        "HotelName": "Old Century Hotel",
+        "Description": "The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts. The hotel also regularly hosts events like wine tastings, beer dinners, and live music.",
+         "Category": "Boutique",
+        "Tags": [ "pool", "free wifi", "concierge" ],
+        "ParkingIncluded": false,
+        "LastRenovationDate": "2019-02-18T00:00:00Z",
+        "Rating": 3.60,
+        "Address": 
+            {
+            "StreetAddress": "140 University Town Center Dr",
+            "City": "Sarasota",
+            "StateProvince": "FL",
+            "PostalCode": "34243",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "3",
+        "HotelName": "Gastronomic Landscape Hotel",
+        "Description": "The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
+        "Category": "Suite",
+        "Tags": [ "restaurant", "bar", "continental breakfast" ],
+        "ParkingIncluded": true,
+        "LastRenovationDate": "2015-09-20T00:00:00Z",
+        "Rating": 4.80,
+        "Address": 
+            {
+            "StreetAddress": "3393 Peachtree Rd",
+            "City": "Atlanta",
+            "StateProvince": "GA",
+            "PostalCode": "30326",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "4",
+        "HotelName": "Sublime Palace Hotel",
+        "Description": "Sublime Palace Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 19th century resort, updated for every modern convenience.",
+        "Category": "Luxury",
+        "Tags": [ "concierge", "view", "air conditioning" ],
+        "ParkingIncluded": true,
+        "LastRenovationDate": "2020-02-06T00:00:00Z",
+        "Rating": 4.60,
+        "Address": 
+            {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
+            }
+        }
+      ]
+    }
+```
+## Query (search) the Iindex Endpoint
+Now that documents are loaded into your index, you can use full-text search to find specific terms or phrases within their fields.
+```http
+### Run a query
+POST {{baseUrl}}/indexes/hotels-quickstart/docs/search?api-version=2025-09-01  HTTP/1.1
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+
+  {
+      "search": "attached restaurant",
+      "select": "HotelId, HotelName, Tags, Description",
+      "searchFields": "Description, Tags",
+      "count": true
+  }
+```
+Response Body:
+```json
+{
+  "@odata.context": "https://my-service.search.windows.net/indexes('hotels-quickstart')/$metadata#docs(*)",
+  "@odata.count": 1,
+  "value": [
+    {
+      "@search.score": 0.5575875,
+      "HotelId": "3",
+      "HotelName": "Gastronomic Landscape Hotel",
+      "Description": "The Gastronomic Hotel stands out for its culinary excellence under the management of William Dough, who advises on and oversees all of the Hotel\u2019s restaurant services.",
+      "Tags": [
+        "restaurant",
+        "bar",
+        "continental breakfast"
+      ]
+    }
+  ]
+}
+```
 
 # Python SDK
 
