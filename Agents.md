@@ -250,6 +250,17 @@ Traditional RAG uses a **single query** to retrieve data.
 
 Agents leverage agentic retrieval to achieve **higher accuracy**, **better context understanding**, and **improved response quality**.
 
+# REST API
+
+*{endpoint}* : Project endpoint in the form of: https://<aiservices-id>.services.ai.azure.com/api/projects/<project-name>
+
+## Create Agent Endpoint
+
+```http
+POST {endpoint}/assistants?api-version=v1
+```
+
+
 
 ## AI Search tool for agents Example
 
