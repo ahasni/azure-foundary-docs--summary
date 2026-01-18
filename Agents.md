@@ -256,7 +256,7 @@ Agents leverage agentic retrieval to achieve **higher accuracy**, **better conte
 
 ## Create Agent Endpoint
 
-```http
+```json
 POST {endpoint}/assistants?api-version=v1
 {
   "model": "naod"
@@ -290,7 +290,7 @@ Status code:
 ## Create Thread And Run Endpoint
 
 Creates a new agent thread and immediately starts a run using that new thread.
-```http
+```json
 POST {endpoint}/threads/runs?api-version=v1
 
 {
@@ -368,6 +368,53 @@ Status code:
 }
 ```
 
+## Messages - Create Message Endpoint
+
+```json
+POST {endpoint}/threads/thread_abc123/messages?api-version=v1
+
+{
+  "role": "user",
+  "content": "Hello, how can you help me today?"
+}
+```
+
+```json
+{
+  "id": "msg_abc123",
+  "object": "thread.message",
+  "created_at": 1736869300,
+  "thread_id": "thread_abc123",
+  "status": "completed",
+  "incomplete_details": {
+    "reason": "content_filter"
+  },
+  "completed_at": 1736869302,
+  "incomplete_at": 25,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "Hello, how can you help me today?",
+        "annotations": []
+      }
+    }
+  ],
+  "assistant_id": "flbyv",
+  "run_id": "mdwsaqyplfhtadedzuatxvld",
+  "attachments": [
+    {
+      "tools": [
+        null
+      ]
+    }
+  ],
+  "metadata": {}
+}
+```
+
+## Python SDK
 
 ## AI Search tool for agents Example
 
