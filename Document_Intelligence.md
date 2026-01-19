@@ -176,6 +176,8 @@ With optional parameters:
 POST {endpoint}/documentintelligence/documentModels/{modelId}:analyze?_overload=analyzeDocument&api-version=2024-11-30&pages={pages}&locale={locale}&stringIndexType={stringIndexType}&features={features}&queryFields={queryFields}&outputContentFormat={outputContentFormat}&output={output}
 ```
 
+## Python SDK
+
 ## Layout modele Example 
 
 ```bash
