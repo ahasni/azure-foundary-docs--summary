@@ -33,6 +33,10 @@ This repository contains documentation covering core Azure AI capabilities, serv
 - **[AI Search](/AI_Search.md)**  
   Covers AI-powered search, retrieval-augmented generation (RAG), and semantic search techniques.
 
+- **[Choose Documents Processing Tool](/AI_Search.md)**
+  Choosing the Right Azure Foundry Tool for Intelligent, Scalable Document Processing
+
+
 ## 🔐 Safety & Governance
 
 - **[Content Safety](/Content_Safety.md)**  
