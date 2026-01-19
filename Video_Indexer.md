@@ -1,4 +1,4 @@
-## Summary
+# Azure AI Video Indexer overview
 
 **Azure AI Video Indexer** is a full-featured video and audio intelligence service that applies advanced machine learning and generative AI to extract structured insights from both live and recorded media. It supports transcription, translation, object and face detection, summarization, scene understanding, sentiment analysis, and metadata generation. The service is designed for enterprise use, offering flexible deployment models, deep multimodal analytics, and strong governance and compliance controls.
 
