@@ -69,6 +69,114 @@ Microsoft uses Speech across products like Teams (captioning), Office (dictation
 
 ---
 
+## SSML (Speech Synthesis Markup Language) — Short Overview
+
+### What is SSML?
+SSML is an **XML-based language** used to control how text is spoken in text-to-speech, such as pitch, speed, volume, pronunciation, and voice style.
+
+---
+
+### What You Can Do with SSML
+- Control pauses, breaks, and sentence structure.
+- Choose voices, languages, styles, and roles.
+- Adjust speaking rate, pitch, emphasis, and volume.
+- Improve pronunciation using phonemes or custom lexicons.
+- Insert audio effects or musical notes.
+
+---
+
+### How to Use SSML
+- **Speech Studio (Audio Content Creation tool)**  
+- **Batch Synthesis API**  
+- **Speech CLI** with `--ssml`  
+- **Speech SDK** using the SSML speak method
+
+---
+
+## Key Features
+
+### Voice Control
+- Select **voice name, language, style, and role**.
+- Use **multiple voices** in one document.
+- Apply audio effects (for example, optimize sound for cars or phone calls).
+- Support for **custom voices** and **multi-talker voices** for dialogues.
+
+### Speaking Styles & Roles
+- Change emotional tone (cheerful, sad, calm, angry, etc.).
+- Adjust intensity with **style degree**.
+- Change role (child, young adult, senior, male/female).
+
+### Language Control
+- Multilingual voices can auto-detect language.
+- Use `<lang xml:lang>` to force a specific **accent or language** (for example, en-GB, fr-FR).
+
+### Prosody (Voice Sound)
+- Adjust:
+  - **Rate** (speed)
+  - **Pitch**
+  - **Volume**
+  - **Contour** (intonation pattern)
+
+### Emphasis
+- Add word-level stress with **moderate, strong, reduced, or none** (supported by limited voices).
+
+### SSML Roles and Styles — Examples
+
+#### 🎭 Speaking Style Examples
+
+Here are some common speaking styles you can use with `<mstts:express-as>`:
+
+| Style | Description |
+|------|-------------|
+| `cheerful` | Happy, positive, upbeat tone |
+| `calm` | Relaxed, steady, composed |
+| `angry` | Annoyed or irritated tone |
+| `empathetic` | Caring and understanding |
+| `assistant` | Warm tone for virtual assistants |
+| `newscast` | Formal, professional news voice |
+| `customerservice` | Friendly and helpful support tone |
+| `whispering` | Soft, quiet speaking style |
+| `sports_commentary_excited` | Energetic sports announcer tone |
+
+#### Example: Using a Speaking Style
+```xml
+<mstts:express-as style="cheerful">
+    I'm really happy to see you today!
+</mstts:express-as>
+
+```
+####Role Examples
+
+| Role               | Description        |
+| ------------------ | ------------------ |
+| `Girl`             | Child female voice |
+| `Boy`              | Child male voice   |
+| `YoungAdultFemale` | Young adult female |
+| `YoungAdultMale`   | Young adult male   |
+| `OlderAdultFemale` | Older adult female |
+| `OlderAdultMale`   | Older adult male   |
+| `SeniorFemale`     | Senior female      |
+| `SeniorMale`       | Senior male        |
+
+```xml
+<mstts:express-as role="SeniorMale" style="calm">
+    Welcome back. It’s good to see you again.
+</mstts:express-as>
+```
+
+#### 🎛 Style Degree Example
+
+Adjust how strong the emotion sounds:
+
+```xml
+<mstts:express-as style="sad" styledegree="2">
+    I'm really going to miss you.
+</mstts:express-as>
+```
+
+
+---
+
 ## Key Takeaway
 Azure Speech enables scalable, customizable, and multilingual speech experiences—from transcription and translation to advanced AI-powered voice interactions—across cloud, edge, and enterprise environments.
 
