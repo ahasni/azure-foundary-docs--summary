@@ -137,6 +137,17 @@ Returns a list of languages supported by Translate, Transliterate, and Dictionar
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
 
+## 🌍 Microsoft Translator Service Endpoints (base URL)
+
+| Region | Service Endpoint | Request Processing Data Centers |
+|--------|------------------|---------------------------------|
+| **Global (recommended)** | `api.cognitive.microsofttranslator.com` | Closest available data center |
+| **Americas** | `api-nam.cognitive.microsofttranslator.com` | East US 2 • West US 2 |
+| **Asia Pacific** | `api-apc.cognitive.microsofttranslator.com` | Japan East • Southeast Asia |
+| **Europe (except Switzerland)** | `api-eur.cognitive.microsofttranslator.com` | France Central • West Europe |
+| **Switzerland** | See Switzerland service endpoints | Switzerland North • Switzerland West |
+
+
 ## Translate to multiple languages Endpoint
 
 ```bash
