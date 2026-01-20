@@ -75,6 +75,83 @@ Customizable features support model training, while preconfigured features do no
 
 ---
 
+# Azure Language in Foundry Tools — Service Limits (Detailed Summary)
+
+## Scope
+Applies to preconfigured Azure Language features:
+- Named Entity Recognition (NER)
+- PII detection
+- Key phrase extraction
+- Entity linking
+- Text Analytics for Health
+- Sentiment analysis & opinion mining
+- Language detection
+
+Custom features (Custom NER, Custom Classification, CLU, Question Answering) have separate limits.
+
+---
+
+## Pricing & Measurement
+- Pricing is based on **text records**, not limits.
+- 1 text record = **1,000 characters**.
+- Limits are enforced per **document** (one string) and per **request**.
+- Large documents should be split into smaller chunks.
+
+---
+
+## Maximum Characters per Document
+
+| Feature Type | Limit |
+|--------------|-------|
+| Text Analytics for Health | 125,000 characters |
+| Other synchronous features | 5,120 characters |
+| Other asynchronous features | 125,000 characters total (max 25 documents) |
+
+### Behavior When Exceeded
+- **Synchronous:** oversized documents are skipped; others still processed.
+- **Asynchronous:** any oversized document causes the **entire request to fail (HTTP 400)**.
+
+---
+
+## Maximum Request Size
+- All preconfigured features: **1 MB per request**
+
+---
+
+## Maximum Documents per Request
+
+| Feature | Max Documents |
+|--------|---------------|
+| Conversation summarization | 1 |
+| Language detection | 1000 |
+| Sentiment analysis | 10 |
+| Opinion mining | 10 |
+| Key phrase extraction | 10 |
+| NER | 5 |
+| PII detection | 5 |
+| Document summarization | 25 |
+| Entity linking | 5 |
+| Text Analytics for Health | 25 (Web API), 1000 (Container) |
+
+> Async requests always allow a maximum of **25 documents**.
+
+---
+
+## Rate Limits (per feature, per pricing tier)
+
+| Tier | Requests / Second | Requests / Minute |
+|------|------------------|-------------------|
+| S / Multi-service | 1000 | 1000 |
+| S0 / F0 | 100 | 300 |
+
+- Limits apply **per feature independently**.
+- Reaching limits requires waiting before sending more requests.
+- Text Analytics for Health container has **no fixed rate limit**.
+
+
+
+---
+
 ## Migration
 Azure Language consolidates **Text Analytics**, **QnA Maker**, and **LUIS**. Existing workloads can be migrated using the Azure Language migration guidance.
 
