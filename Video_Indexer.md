@@ -164,8 +164,7 @@ While your video uploads and indexes, view some sample videos.
 1. Select the video and then select the **Timeline** tab. The video transcript appears.
 
 2. Scan the transcript to see what the video covers.  
-   *Screenshot showing spoken words on the Timeline tab.*
-
+   
 3. Select **Azure AI Video Indexer** above the left navigation bar to exit and return to the home page.
 
 ---
@@ -183,8 +182,7 @@ While your video uploads and indexes, view some sample videos.
    - Labels  
    - Named entities  
 
-   *Screenshot showing details on the Insights tab.*
-
+   
 4. Select **Azure AI Video Indexer** above the left navigation bar to exit and return to the home page.
 
 ---
@@ -209,4 +207,4 @@ Access the API JSON response for your indexing job.
 2. Select **Insights (JSON)**.  
    The JSON file opens in a new browser window or tab.  
 
-   *Screenshot showing where to download JSON insights.*
+  
