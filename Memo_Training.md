@@ -58,14 +58,14 @@ Participates in workflows
 Works independently or collaboratively with humans or other agents
 
 ## Limitation :
-Limit name 	Limit value
-Maximum number of files per agent/thread 	**10,000**
-Maximum file size for agents 	**512 MB**
-Maximum size for all uploaded files for agents 	**300 GB**
-Maximum file size in tokens for attaching to a vector store 	**2,000,000 tokens**
-Maximum number of messages per thread 	**100,000**
-Maximum size of text content per message 	**1,500,000 characters**
-Maximum number of tools registered per agent 	**128**
+  Limit name 	Limit value
+  Maximum number of files per agent/thread 	**10,000**
+  Maximum file size for agents 	**512 MB**
+  Maximum size for all uploaded files for agents 	**300 GB**
+  Maximum file size in tokens for attaching to a vector store 	**2,000,000 tokens**
+  Maximum number of messages per thread 	**100,000**
+  Maximum size of text content per message 	**1,500,000 characters**
+  Maximum number of tools registered per agent 	**128**
 
 ## REST API
 
