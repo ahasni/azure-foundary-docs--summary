@@ -20,7 +20,7 @@ Native integrations with Azure OpenAI, Microsoft Foundry, and Azure data platfor
 Endpoint : https://{search-service-name}.search.windows.net/indexes?api-version=2024-07-01
 
 ### List existing indexes by name
-**GET** {{baseUrl}}/**indexes**?api-version=2025-09-01
+__GET__ {{baseUrl}}/**indexes**?api-version=2025-09-01
 
 ### Create a new index
 **POST** {{baseUrl}}/**indexes**?api-version=2025-09-01
