@@ -17,32 +17,32 @@
 
 ## Rest API
 		
-		Endpoint : https://{search-service-name}.search.windows.net/indexes?api-version=2024-07-01
-		
-		### List existing indexes by name
-			**GET** {{baseUrl}}/**indexes**?api-version=2025-09-01
-		
-		### Create a new index
-			**POST** {{baseUrl}}/**indexes**?api-version=2025-09-01
-		
-		### Upload documents
-			**POST** {{baseUrl}}/**indexes**/hotels-quickstart/docs/index?api-version=2025-09-01
+Endpoint : https://{search-service-name}.search.windows.net/indexes?api-version=2024-07-01
+
+### List existing indexes by name
+	**GET** {{baseUrl}}/**indexes**?api-version=2025-09-01
+
+### Create a new index
+	**POST** {{baseUrl}}/**indexes**?api-version=2025-09-01
+
+### Upload documents
+	**POST** {{baseUrl}}/**indexes**/hotels-quickstart/docs/index?api-version=2025-09-01
 
 ## Python SDK
 
-		**Connect to a search service Example**
-			Used Classes : azure.identity.**DefaultAzureCredential**, azure.search.documents.indexes.**SearchIndexClient**
-			Used methods :  client.**list_indexes()** (List existing indexes)
-		
-		**Agentic Retrieval (RAG) Example**
-			Used Classes : azure.search.documents.indexes.**SearchIndexClient**, azure.search.documents.**SearchIndexingBufferedSender**, azure.search.documents.knowledgebases.**KnowledgeBaseRetrievalClient**
-			Used methods : index_client.**create_or_update_index(index)** (create index), index_client.**create_or_update_knowledge_source(knowledge_source=ks)** (Create a knowledge source), index_client.**create_or_update_knowledge_base(knowledge_base)**,
-							agent_client.retrieve(retrieval_request=req), ndex_client.delete_knowledge_base(knowledge_base_name), index_client.delete_knowledge_source(knowledge_source=knowledge_source_name),
-							index_client.delete_index(index_name)
-		
-		**Upload and Run vector Search Example
-			Used Classes : **SearchClient**
-			Used methods : search_client.**upload_documents(documents=documents)**,  results = **search_client.search(...)**
+**Connect to a search service Example**
+	Used Classes : azure.identity.**DefaultAzureCredential**, azure.search.documents.indexes.**SearchIndexClient**
+	Used methods :  client.**list_indexes()** (List existing indexes)
+
+**Agentic Retrieval (RAG) Example**
+	Used Classes : azure.search.documents.indexes.**SearchIndexClient**, azure.search.documents.**SearchIndexingBufferedSender**, azure.search.documents.knowledgebases.**KnowledgeBaseRetrievalClient**
+	Used methods : index_client.**create_or_update_index(index)** (create index), index_client.**create_or_update_knowledge_source(knowledge_source=ks)** (Create a knowledge source), index_client.**create_or_update_knowledge_base(knowledge_base)**,
+					agent_client.retrieve(retrieval_request=req), ndex_client.delete_knowledge_base(knowledge_base_name), index_client.delete_knowledge_source(knowledge_source=knowledge_source_name),
+					index_client.delete_index(index_name)
+
+**Upload and Run vector Search Example
+	Used Classes : **SearchClient**
+	Used methods : search_client.**upload_documents(documents=documents)**,  results = **search_client.search(...)**
 			
 -----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -58,86 +58,86 @@
 		Works independently or collaboratively with humans or other agents
 		
 ## Limitation :
-		Limit name 	Limit value
-		Maximum number of files per agent/thread 	**10,000**
-		Maximum file size for agents 	**512 MB**
-		Maximum size for all uploaded files for agents 	**300 GB**
-		Maximum file size in tokens for attaching to a vector store 	**2,000,000 tokens**
-		Maximum number of messages per thread 	**100,000**
-		Maximum size of text content per message 	**1,500,000 characters**
-		Maximum number of tools registered per agent 	**128**
+Limit name 	Limit value
+Maximum number of files per agent/thread 	**10,000**
+Maximum file size for agents 	**512 MB**
+Maximum size for all uploaded files for agents 	**300 GB**
+Maximum file size in tokens for attaching to a vector store 	**2,000,000 tokens**
+Maximum number of messages per thread 	**100,000**
+Maximum size of text content per message 	**1,500,000 characters**
+Maximum number of tools registered per agent 	**128**
 	
 ## REST API
 		
-		{endpoint} : Project endpoint in the form of: **https://AI_SERVICE_ID.services.ai.azure.com/api/projects/PROJECT_NAME**
-		
-		Create Agent Endpoint
-		
-			POST {endpoint}/**assistants**?api-version=v1
-				{
-				  "model": "naod"
-				}
-		
-		Create Thread And Run Endpoint
-			
-			POST {endpoint}/**threads/runs**?api-version=v1
-			{
-			  "assistant_id": "asst_abc123"
-			}
-		
-		Messages - Create Message Endpoint
-		
-			POST {endpoint}/**threads/thread_abc123/messages**?api-version=v1
-			{
-			  "role": "user",
-			  "content": "Hello, how can you help me today?"
-			}
+{endpoint} : Project endpoint in the form of: **https://AI_SERVICE_ID.services.ai.azure.com/api/projects/PROJECT_NAME**
+
+Create Agent Endpoint
+
+	POST {endpoint}/**assistants**?api-version=v1
+		{
+		  "model": "naod"
+		}
+
+Create Thread And Run Endpoint
+	
+	POST {endpoint}/**threads/runs**?api-version=v1
+	{
+	  "assistant_id": "asst_abc123"
+	}
+
+Messages - Create Message Endpoint
+
+	POST {endpoint}/**threads/thread_abc123/messages**?api-version=v1
+	{
+	  "role": "user",
+	  "content": "Hello, how can you help me today?"
+	}
 
 ## Python SDK
 		
-		AI Search tool for agents Example
-			Used Classes : azure.ai.projects import AIProjectClient, azure.ai.projects.models import ( AzureAISearchAgentTool, PromptAgentDefinition, AzureAISearchToolResource, AISearchIndexResource, AzureAISearchQueryType )
-			Used methods : openai_client = project_client.get_openai_client(), agent = project_client.agents.create_version(agent_name="MyAgent", definition=PromptAgentDefinition(model=model_deploy, instructions="you are ...", tools=[ ])), stream_response = openai_client.responses.create(), project_client.agents.delete_version()
-        
-		
-		File Search tool Example
-			 Used methods : 
-				Create vector store for file search
-					vector_store = **openai_client.vector_stores.create(name="ProductInfoStore")**
+AI Search tool for agents Example
+	Used Classes : azure.ai.projects import AIProjectClient, azure.ai.projects.models import ( AzureAISearchAgentTool, PromptAgentDefinition, AzureAISearchToolResource, AISearchIndexResource, AzureAISearchQueryType )
+	Used methods : openai_client = project_client.get_openai_client(), agent = project_client.agents.create_version(agent_name="MyAgent", definition=PromptAgentDefinition(model=model_deploy, instructions="you are ...", tools=[ ])), stream_response = openai_client.responses.create(), project_client.agents.delete_version()
 
-				Upload file to vector store
-					file = **openai_client.vector_stores.files.upload_and_poll(
-						vector_store_id=vector_store.id, file=open(asset_file_path, "rb")
-					)**
+
+File Search tool Example
+	 Used methods : 
+		Create vector store for file search
+			vector_store = **openai_client.vector_stores.create(name="ProductInfoStore")**
+
+		Upload file to vector store
+			file = **openai_client.vector_stores.files.upload_and_poll(
+				vector_store_id=vector_store.id, file=open(asset_file_path, "rb")
+			)**
+	
+		
+		Create agent with file search tool
+			agent = **project_client.agents.create_version(...)**
 			
-				
-				Create agent with file search tool
-					agent = **project_client.agents.create_version(...)**
-					
-				Create a conversation for the agent interaction
-					conversation = **openai_client.conversations.create()**
-				
-				Send a query to search through the uploaded file
-					response = **openai_client.responses.create(...)**
+		Create a conversation for the agent interaction
+			conversation = **openai_client.conversations.create()**
 		
-		Create an Agent with the MCP Tool Example
-		
-			Used Classes : azure.ai.projects import **AIProjectClient**
-						   azure.ai.projects.models import **PromptAgentDefinition, MCPTool, Tool**
-						   openai.types.responses.response_input_param import **McpApprovalResponse, ResponseInputParam**
-			Used methods :	
-					Create a prompt-based agent with MCP capabilities
-						agent = **project_client.agents.create_version()**
-					
-					Create a conversation
-						conversation = **openai_client.conversations.create()**
-					
-					Trigger MCP tool usage
-						response = **openai_client.responses.create(**
-							**conversation=conversation.id,
-							**input="What is my username in Github profile?",
-							**extra_body={"agent": {"name": agent.name, "type": "agent_reference"}},
-						**)**
+		Send a query to search through the uploaded file
+			response = **openai_client.responses.create(...)**
+
+Create an Agent with the MCP Tool Example
+
+	Used Classes : azure.ai.projects import **AIProjectClient**
+				   azure.ai.projects.models import **PromptAgentDefinition, MCPTool, Tool**
+				   openai.types.responses.response_input_param import **McpApprovalResponse, ResponseInputParam**
+	Used methods :	
+			Create a prompt-based agent with MCP capabilities
+				agent = **project_client.agents.create_version()**
+			
+			Create a conversation
+				conversation = **openai_client.conversations.create()**
+			
+			Trigger MCP tool usage
+				response = **openai_client.responses.create(**
+					**conversation=conversation.id,
+					**input="What is my username in Github profile?",
+					**extra_body={"agent": {"name": agent.name, "type": "agent_reference"}},
+				**)**
 	
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -165,115 +165,115 @@
 
 ## Input Requirements (Highlights)
 
-		Analyze Text: **Up to 10K characters
-		Analyze Image:
-			Max size: **4 MB
-			Formats: **JPEG, PNG, GIF, BMP, TIFF, WEBP
-			Dimensions: **50×50 to 7200×7200
-		Prompt Shields: **10K characters, up to 5 documents
-		Groundedness Detection:
-			**55K characters for sources
-			**7.5K characters for queries
-		Task Adherence: **Up to 100K characters
+Analyze Text: **Up to 10K characters
+Analyze Image:
+	Max size: **4 MB
+	Formats: **JPEG, PNG, GIF, BMP, TIFF, WEBP
+	Dimensions: **50×50 to 7200×7200
+Prompt Shields: **10K characters, up to 5 documents
+Groundedness Detection:
+	**55K characters for sources
+	**7.5K characters for queries
+Task Adherence: **Up to 100K characters
 
 ## REST API
 		
-		Analyze Image Endpoint
+Analyze Image Endpoint
 
-			**POST** {endpoint}/**contentsafety/image:analyze?api-version=2024-09-01**
+	**POST** {endpoint}/**contentsafety/image:analyze?api-version=2024-09-01**
 
-		Analyze Text Endpoint
+Analyze Text Endpoint
 
-			**POST** {endpoint}/**contentsafety/text:analyze?api-version=2024-09-01**
+	**POST** {endpoint}/**contentsafety/text:analyze?api-version=2024-09-01**
 
-		Detect Text Protected Material Endpoint
+Detect Text Protected Material Endpoint
 
-			**POST** {endpoint}/**contentsafety/text:detectProtectedMaterial?api-version=2024-09-01**
+	**POST** {endpoint}/**contentsafety/text:detectProtectedMaterial?api-version=2024-09-01**
 
-		Shield Prompt Endpoint
+Shield Prompt Endpoint
 
-			**POST** {endpoint}/**contentsafety/text:shieldPrompt?api-version=2024-09-01**
-	
+	**POST** {endpoint}/**contentsafety/text:shieldPrompt?api-version=2024-09-01**
+
 ## Python SDK
 	
-		Analys Text Content Example
-			Used Classes : 
-					from azure.ai.contentsafety import **ContentSafetyClient
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.core.exceptions import **HttpResponseError
-					from azure.ai.contentsafety.models **import AnalyzeTextOptions, TextCategory
-					
-					Enum:
-						**TextCategory.HATE
-						**TextCategory.SELF_HARM
-						**TextCategory.SEXUAL	
-						**TextCategory.VIOLENCE
-
-			Used Methods : 
-					
-					Create an Azure AI Content Safety client
-						client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))**
-
-					Contruct request
-						request = **AnalyzeTextOptions(text="Your input text")**
-						
-					Analyze text
-						response = **client.analyze_text(request)**
-
-		Text Blocklist Example
-			Used Classes :
-					from azure.ai.contentsafety import **BlocklistClient
-					from azure.ai.contentsafety import **ContentSafetyClient
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.core.exceptions import **HttpResponseError
-					from azure.ai.contentsafety.models import (
-						**TextBlocklist, AddOrUpdateTextBlocklistItemsOptions, TextBlocklistItem, AnalyzeTextOptions
-					)
-					
-					
-			Used Methods :
-					Create a Blocklist client
-						client = **BlocklistClient(endpoint, AzureKeyCredential(key))
-					
-					
-						blocklist = **client.create_or_update_text_blocklist(
-						**blocklist_name=blocklist_name,
-						**options=TextBlocklist(blocklist_name=blocklist_name, description=blocklist_description),
-						**	)
-					Create a Content Safety client
-						client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))
-					
-					
-					After you edit your blocklist, it usually takes effect in 5 minutes, please wait some time before analyzing
-					with blocklist after editing.
-						analysis_result = **client.analyze_text(
-							**AnalyzeTextOptions(text=input_text, blocklist_names=[blocklist_name], halt_on_blocklist_hit=False)
-						**)
+Analys Text Content Example
+Used Classes : 
+		from azure.ai.contentsafety import **ContentSafetyClient
+		from azure.core.credentials import **AzureKeyCredential
+		from azure.core.exceptions import **HttpResponseError
+		from azure.ai.contentsafety.models **import AnalyzeTextOptions, TextCategory
 		
-		Analyze Image Content Example
-			Used Classes :
-					from azure.ai.contentsafety import **ContentSafetyClient
-					from azure.ai.contentsafety.models import **AnalyzeImageOptions, ImageData, ImageCategory
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.core.exceptions import **HttpResponseError
-					
-					Enum:
-						**ImageCategory.HATE
-						**ImageCategory.SELF_HARM
-						**ImageCategory.SEXUAL
-						**ImageCategory.VIOLENCE
+		Enum:
+			**TextCategory.HATE
+			**TextCategory.SELF_HARM
+			**TextCategory.SEXUAL	
+			**TextCategory.VIOLENCE
+
+Used Methods : 
+		
+		Create an Azure AI Content Safety client
+			client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))**
+
+		Contruct request
+			request = **AnalyzeTextOptions(text="Your input text")**
 			
-			Useed Methods:
-					
-					Create an Azure AI Content Safety client
-						client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))
-						
-					Build request
-						with open(image_path, "rb") as file:
-							request = **AnalyzeImageOptions(image=ImageData(content=file.read()))**
-					
-					Analyze image
-						response = **client.analyze_image(request)**					
+		Analyze text
+			response = **client.analyze_text(request)**
+
+Text Blocklist Example
+Used Classes :
+		from azure.ai.contentsafety import **BlocklistClient
+		from azure.ai.contentsafety import **ContentSafetyClient
+		from azure.core.credentials import **AzureKeyCredential
+		from azure.core.exceptions import **HttpResponseError
+		from azure.ai.contentsafety.models import (
+			**TextBlocklist, AddOrUpdateTextBlocklistItemsOptions, TextBlocklistItem, AnalyzeTextOptions
+		)
+		
+		
+Used Methods :
+		Create a Blocklist client
+			client = **BlocklistClient(endpoint, AzureKeyCredential(key))
+		
+		
+			blocklist = **client.create_or_update_text_blocklist(
+			**blocklist_name=blocklist_name,
+			**options=TextBlocklist(blocklist_name=blocklist_name, description=blocklist_description),
+			**	)
+		Create a Content Safety client
+			client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))
+		
+		
+		After you edit your blocklist, it usually takes effect in 5 minutes, please wait some time before analyzing
+		with blocklist after editing.
+			analysis_result = **client.analyze_text(
+				**AnalyzeTextOptions(text=input_text, blocklist_names=[blocklist_name], halt_on_blocklist_hit=False)
+			**)
+
+Analyze Image Content Example
+Used Classes :
+		from azure.ai.contentsafety import **ContentSafetyClient
+		from azure.ai.contentsafety.models import **AnalyzeImageOptions, ImageData, ImageCategory
+		from azure.core.credentials import **AzureKeyCredential
+		from azure.core.exceptions import **HttpResponseError
+		
+		Enum:
+			**ImageCategory.HATE
+			**ImageCategory.SELF_HARM
+			**ImageCategory.SEXUAL
+			**ImageCategory.VIOLENCE
+
+Useed Methods:
+		
+		Create an Azure AI Content Safety client
+			client = **ContentSafetyClient(endpoint, AzureKeyCredential(key))
+			
+		Build request
+			with open(image_path, "rb") as file:
+				request = **AnalyzeImageOptions(image=ImageData(content=file.read()))**
+		
+		Analyze image
+			response = **client.analyze_image(request)**					
 					
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -294,53 +294,53 @@
 	
 ## Resource limits (Standard S0)
 
-		Max analyzers: **100,000
-		Max analysis/min: **1,000 pages/images
-		Audio & Video: **up to 4 hours each
-		Max operations/min: **3,000
+Max analyzers: **100,000
+Max analysis/min: **1,000 pages/images
+Audio & Video: **up to 4 hours each
+Max operations/min: **3,000
 
-	Supported generative models
+Supported generative models
 
-		Chat completion: **GPT-4o, GPT-4.1, mini & nano variants
-		Embeddings: **text-embedding-3-small, text-embedding-3-large, text-embedding-ada-002
+	Chat completion: **GPT-4o, GPT-4.1, mini & nano variants
+	Embeddings: **text-embedding-3-small, text-embedding-3-large, text-embedding-ada-002
 
-	Input file limits
+Input file limits
 
-		Documents & text: **PDF, Office (docx, xlsx, pptx), TXT, HTML, Markdown, RTF, email, XML
-			**≤ 200 MB / ≤ 300 pages or ≤ 1M characters
-			**Pro mode (preview): only PDF, TIFF, images; max 100 MB / 150 pages**
-		Images: **JPEG, PNG, BMP, HEIF/HEIC; ≤ 200 MB, 50×50 to 10,000×10,000 px
-		Audio: **WAV, MP3, MP4, Opus/OGG, FLAC, WMA, AAC, AMR, 3GP, WebM, M4A, SPX; ≤ 300 MB / 2 h†
-			**†Supports up to 1 GB / 4 h, faster processing for ≤ 300 MB / ≤ 2 h
-		Video: **MP4, M4V, FLV, WMV, ASF, AVI, MKV, MOV; min 320×240 px, max 1920×1080 px
-			**Direct upload: ≤ 200 MB / 30 min
-			**URL reference: ≤ 4 GB / 2 h
-			**Frame sampling: ~1 frame/sec, frames scaled to 512×512 px
+	Documents & text: **PDF, Office (docx, xlsx, pptx), TXT, HTML, Markdown, RTF, email, XML
+		**≤ 200 MB / ≤ 300 pages or ≤ 1M characters
+		**Pro mode (preview): only PDF, TIFF, images; max 100 MB / 150 pages**
+	Images: **JPEG, PNG, BMP, HEIF/HEIC; ≤ 200 MB, 50×50 to 10,000×10,000 px
+	Audio: **WAV, MP3, MP4, Opus/OGG, FLAC, WMA, AAC, AMR, 3GP, WebM, M4A, SPX; ≤ 300 MB / 2 h†
+		**†Supports up to 1 GB / 4 h, faster processing for ≤ 300 MB / ≤ 2 h
+	Video: **MP4, M4V, FLV, WMV, ASF, AVI, MKV, MOV; min 320×240 px, max 1920×1080 px
+		**Direct upload: ≤ 200 MB / 30 min
+		**URL reference: ≤ 4 GB / 2 h
+		**Frame sampling: ~1 frame/sec, frames scaled to 512×512 px
 
 
 ## REST API
 	
-	Extract content and fields from input.
+Extract content and fields from input.
 
-		**POST** {endpoint}/**contentunderstanding/analyzers/{analyzerId}:analyze?api-version=2025-11-01
+	**POST** {endpoint}/**contentunderstanding/analyzers/{analyzerId}:analyze?api-version=2025-11-01
 
-	Content Analyzers - Get Operation Status Endpoint
+Content Analyzers - Get Operation Status Endpoint
 
-		Get the status of an analyzer creation operation.
+	Get the status of an analyzer creation operation.
 
-		**GET** {endpoint}/**contentunderstanding/analyzers/{analyzerId}/operations/{operationId}?api-version=2025-11-01
+	**GET** {endpoint}/**contentunderstanding/analyzers/{analyzerId}/operations/{operationId}?api-version=2025-11-01
 
-	Get Result Endpoint
+Get Result Endpoint
 
-		Get the result of an analysis operation.
+	Get the result of an analysis operation.
 
-		**GET** {endpoint}/**contentunderstanding/analyzerResults/{operationId}?api-version=2025-11-01
+	**GET** {endpoint}/**contentunderstanding/analyzerResults/{operationId}?api-version=2025-11-01
 
-	Content Analyzers - Get Result File Endpoint
+Content Analyzers - Get Result File Endpoint
 
-		Get a file associated with the result of an analysis operation.
+	Get a file associated with the result of an analysis operation.
 
-		**GET** {endpoint}/**contentunderstanding/analyzerResults/{operationId}/files/{path}?api-version=2025-11-01
+	**GET** {endpoint}/**contentunderstanding/analyzerResults/{operationId}/files/{path}?api-version=2025-11-01
 		
 		
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -361,112 +361,112 @@
 			Custom model training
 
 ## Supported Document Types
-		| Document Type                               | Read | Layout | Prebuilt Models | Custom Models | Add-on Capabilities |
-		|--------------------------------------------|------|--------|-----------------|---------------|--------------------|
-		| PDF                                        | ✔️   | ✔️     | ✔️              | ✔️            | ✔️                 |
-		| Images (JPEG, PNG, BMP, TIFF, HEIF)        | ✔️   | ✔️     | ✔️              | ✔️            | ✔️                 |
-		| Microsoft Office (DOCX, PPTX, XLS)         | ✔️   | ✔️     | ✖️              | ✖️            | ✖️                 |
+| Document Type                               | Read | Layout | Prebuilt Models | Custom Models | Add-on Capabilities |
+|--------------------------------------------|------|--------|-----------------|---------------|--------------------|
+| PDF                                        | ✔️   | ✔️     | ✔️              | ✔️            | ✔️                 |
+| Images (JPEG, PNG, BMP, TIFF, HEIF)        | ✔️   | ✔️     | ✔️              | ✔️            | ✔️                 |
+| Microsoft Office (DOCX, PPTX, XLS)         | ✔️   | ✔️     | ✖️              | ✖️            | ✖️                 |
 
 
 ## General Quotas
-		| Limit                          | Free (F0) | Standard (S0) | Adjustable |
-		|--------------------------------|-----------|---------------|------------|
-		| Analyze transactions / sec    | **1         | 15            | No / Yes   |
-		| Get operations / sec          | **1         | 50            | No / Yes   |
-		| Model management ops / sec    | **1         | 5             | No / Yes   |
-		| List operations / sec         | **1         | 10            | No / Yes   |
-		| Max document size             | **4 MB      | 500 MB        | No         |
-		| Max pages (analysis)          | **2         | 2,000         | No         |
-		| Max size labels file          | **10 MB     | 10 MB         | No         |
-		| Max OCR JSON response         | **500 MB    | 500 MB        | No         |
-		| Max template models           | **500       | 5,000         | No         |
-		| Max neural models             | **100       | 500           | No         |
+| Limit                          | Free (F0) | Standard (S0) | Adjustable |
+|--------------------------------|-----------|---------------|------------|
+| Analyze transactions / sec    | **1         | 15            | No / Yes   |
+| Get operations / sec          | **1         | 50            | No / Yes   |
+| Model management ops / sec    | **1         | 5             | No / Yes   |
+| List operations / sec         | **1         | 10            | No / Yes   |
+| Max document size             | **4 MB      | 500 MB        | No         |
+| Max pages (analysis)          | **2         | 2,000         | No         |
+| Max size labels file          | **10 MB     | 10 MB         | No         |
+| Max OCR JSON response         | **500 MB    | 500 MB        | No         |
+| Max template models           | **500       | 5,000         | No         |
+| Max neural models             | **100       | 500           | No         |
 
 
 
 ## REST API
 
-		{endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
-		
-		Analyze Batch Documents Endpoint
+{endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
 
-			Analyzes batch documents with document model.
+Analyze Batch Documents Endpoint
 
-			**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyzeBatch?api-version=2024-11-30**
+	Analyzes batch documents with document model.
 
-		
-		Analyze Document From Stream Endpoint
+	**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyzeBatch?api-version=2024-11-30**
 
-			Analyzes document with document model.
 
-			**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyze?api-version=2024-11-30**
+Analyze Document From Stream Endpoint
 
-		Analyze Document Endpoint
+	Analyzes document with document model.
 
-			Analyzes document with document model.
+	**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyze?api-version=2024-11-30**
 
-			**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyze?_overload=analyzeDocument&api-version=2024-11-30
+Analyze Document Endpoint
+
+	Analyzes document with document model.
+
+	**POST** {endpoint}/**documentintelligence/documentModels/{modelId}:analyze?_overload=analyzeDocument&api-version=2024-11-30
 
 ## Python SDK
 	
-		Layout modele Example
+Layout modele Example
+	
+	Used Classes : 
+			from azure.core.credentials import **AzureKeyCredential
+			from azure.ai.documentintelligence import **DocumentIntelligenceClient
+			from azure.ai.documentintelligence.models import **AnalyzeResult
+			from azure.ai.documentintelligence.models import **AnalyzeDocumentRequest
+	
+	Used Methods: 
+			document_intelligence_client = **DocumentIntelligenceClient(
+				**endpoint=endpoint, credential=AzureKeyCredential(key)
+			**)
 			
-			Used Classes : 
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.ai.documentintelligence import **DocumentIntelligenceClient
-					from azure.ai.documentintelligence.models import **AnalyzeResult
-					from azure.ai.documentintelligence.models import **AnalyzeDocumentRequest
+			poller = document_intelligence_client.**begin_analyze_document(
+				**"prebuilt-layout", AnalyzeDocumentRequest(url_source=formUrl
+			))**
 			
-			Used Methods: 
-					document_intelligence_client = **DocumentIntelligenceClient(
-						**endpoint=endpoint, credential=AzureKeyCredential(key)
-					**)
-					
-					poller = document_intelligence_client.**begin_analyze_document(
-						**"prebuilt-layout", AnalyzeDocumentRequest(url_source=formUrl
-					))**
-					
-					result: AnalyzeResult = poller.**result()**
-		
-		Prebuilt model(prebuilt-invoice) Example
-			
-			Used Classess:
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.ai.documentintelligence **import DocumentIntelligenceClient
-					from azure.ai.documentintelligence.models import **AnalyzeResult
-					from azure.ai.documentintelligence.models import **AnalyzeDocumentRequest
-			
-			Used Methods :
-					
-					document_intelligence_client = **DocumentIntelligenceClient(
-						**endpoint=endpoint, credential=AzureKeyCredential(key)
-					**)
+			result: AnalyzeResult = poller.**result()**
 
-					poller = document_intelligence_client.**begin_analyze_document(
-						**"prebuilt-invoice", AnalyzeDocumentRequest(url_source=invoiceUrl)
-					**)
-					
-					invoices = poller.**result()
-		
-		Extract Figures from Documents Example
+Prebuilt model(prebuilt-invoice) Example
+	
+	Used Classess:
+			from azure.core.credentials import **AzureKeyCredential
+			from azure.ai.documentintelligence **import DocumentIntelligenceClient
+			from azure.ai.documentintelligence.models import **AnalyzeResult
+			from azure.ai.documentintelligence.models import **AnalyzeDocumentRequest
+	
+	Used Methods :
 			
-			Used Classess:
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.ai.documentintelligence import **DocumentIntelligenceClient
-					from azure.ai.documentintelligence.models import **AnalyzeOutputOption, AnalyzeResult
-					
-			Used Methods:
-					
-					document_intelligence_client = **DocumentIntelligenceClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+			document_intelligence_client = **DocumentIntelligenceClient(
+				**endpoint=endpoint, credential=AzureKeyCredential(key)
+			**)
 
-					with open(path_to_sample_documents, "rb") as f:
-						poller = document_intelligence_client.**begin_analyze_document(
-							**"prebuilt-layout",
-							**analyze_request=f,
-							**output=[AnalyzeOutputOption.FIGURES],
-							**content_type="application/octet-stream",
-						**)
-					result: AnalyzeResult = poller.**result()
+			poller = document_intelligence_client.**begin_analyze_document(
+				**"prebuilt-invoice", AnalyzeDocumentRequest(url_source=invoiceUrl)
+			**)
+			
+			invoices = poller.**result()
+
+Extract Figures from Documents Example
+	
+	Used Classess:
+			from azure.core.credentials import **AzureKeyCredential
+			from azure.ai.documentintelligence import **DocumentIntelligenceClient
+			from azure.ai.documentintelligence.models import **AnalyzeOutputOption, AnalyzeResult
+			
+	Used Methods:
+			
+			document_intelligence_client = **DocumentIntelligenceClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+
+			with open(path_to_sample_documents, "rb") as f:
+				poller = document_intelligence_client.**begin_analyze_document(
+					**"prebuilt-layout",
+					**analyze_request=f,
+					**output=[AnalyzeOutputOption.FIGURES],
+					**content_type="application/octet-stream",
+				**)
+			result: AnalyzeResult = poller.**result()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -480,59 +480,59 @@
 	
 ## Python SDK
 	
-		Create a Foundry Project Client (Base Setup)
-		
-			This is the preferred way when using agents, evaluations, or governance.
+Create a Foundry Project Client (Base Setup)
 
-			openai_client = project.**get_openai_client(
-				**api_version="2024-10-01-preview"
-			**)
+	This is the preferred way when using agents, evaluations, or governance.
 
-			response = openai_client.**responses.create(
-				**model="gpt-4.1-mini",
-				**input="Explain the CAP theorem in simple terms."
-			)**
+	openai_client = project.**get_openai_client(
+		**api_version="2024-10-01-preview"
+	**)
 
-			print(**response.output_text**)
-			
-		
-		Direct Azure OpenAI Call (Model-Only, No Foundry Features)
-			
-			Use this when you only need inference, not agents or tools.
+	response = openai_client.**responses.create(
+		**model="gpt-4.1-mini",
+		**input="Explain the CAP theorem in simple terms."
+	)**
 
-				from openai import OpenAI
-				from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+	print(**response.output_text**)
+	
 
-				token_provider = **get_bearer_token_provider(
-					**DefaultAzureCredential(),
-					**"https://cognitiveservices.azure.com/.default"
-				**)
+Direct Azure OpenAI Call (Model-Only, No Foundry Features)
+	
+	Use this when you only need inference, not agents or tools.
 
-				client = **OpenAI(
-					**base_url="https://<YOUR-RESOURCE-NAME>.openai.azure.com/openai/v1/",
-					**api_key=token_provider
-				**)
+		from openai import OpenAI
+		from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
-				response = client.**responses.create(
-					**model="gpt-4o-mini",
-					**input="Summarize this text in one sentence."
-				**)
+		token_provider = **get_bearer_token_provider(
+			**DefaultAzureCredential(),
+			**"https://cognitiveservices.azure.com/.default"
+		**)
 
-				print(**response.output_text**)
+		client = **OpenAI(
+			**base_url="https://<YOUR-RESOURCE-NAME>.openai.azure.com/openai/v1/",
+			**api_key=token_provider
+		**)
+
+		response = client.**responses.create(
+			**model="gpt-4o-mini",
+			**input="Summarize this text in one sentence."
+		**)
+
+		print(**response.output_text**)
 		
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Azure Language
 
-	Azure Language is a cloud-based Natural Language Processing (NLP) service for understanding and analyzing text. It integrates with Microsoft Foundry, REST APIs, client libraries, and AI agents. Capabilities are also available through the Azure Language MCP (Model Context Protocol) server, supporting both cloud-hosted and self-hosted deployments.
+Azure Language is a cloud-based Natural Language Processing (NLP) service for understanding and analyzing text. It integrates with Microsoft Foundry, REST APIs, client libraries, and AI agents. Capabilities are also available through the Azure Language MCP (Model Context Protocol) server, supporting both cloud-hosted and self-hosted deployments.
 
 ## Available Features
 
-		Azure Language unifies previously separate services:
+Azure Language unifies previously separate services:
 
-			**Text Analytics
-			**QnA Maker
-			**Language Understanding (LUIS)
+	**Text Analytics
+	**QnA Maker
+	**Language Understanding (LUIS)
 	
 ## Preconfigured Features
 
@@ -555,268 +555,268 @@
 		
 ## Maximum Characters per Document
 	
-		Feature Type 	Limit
-		Text Analytics for Health 	**125,000 characters
-		Other synchronous features 	**5,120 characters
-		Other asynchronous features 	**125,000 characters total (max 25 documents)
-		Behavior When Exceeded
+Feature Type 	Limit
+Text Analytics for Health 	**125,000 characters
+Other synchronous features 	**5,120 characters
+Other asynchronous features 	**125,000 characters total (max 25 documents)
+Behavior When Exceeded
 
-			Synchronous: oversized documents are skipped; others still processed.
-			Asynchronous: any oversized document causes the entire request to fail (HTTP 400).
+	Synchronous: oversized documents are skipped; others still processed.
+	Asynchronous: any oversized document causes the entire request to fail (HTTP 400).
 
 ## Maximum Request Size
 
-		All preconfigured features: **1 MB per request
+All preconfigured features: **1 MB per request
 
-		Maximum Documents per Request
-		Feature 	Max Documents
-		Conversation summarization 	**1
-		Language detection 	**1000
-		Sentiment analysis 	**10
-		Opinion mining 	**10
-		Key phrase extraction 	**10
-		NER 	**5
-		PII detection 	**5
-		Document summarization 	**25
-		Entity linking 	**5
-		Text Analytics for Health 	**25 (Web API), 1000 (Container)
+Maximum Documents per Request
+Feature 	Max Documents
+Conversation summarization 	**1
+Language detection 	**1000
+Sentiment analysis 	**10
+Opinion mining 	**10
+Key phrase extraction 	**10
+NER 	**5
+PII detection 	**5
+Document summarization 	**25
+Entity linking 	**5
+Text Analytics for Health 	**25 (Web API), 1000 (Container)
 
-			Async requests always allow a maximum of **25 documents.
+	Async requests always allow a maximum of **25 documents.
 
 
 ## Rate Limits (per feature, per pricing tier)
-		Tier 	Requests / Second 	Requests / Minute
-		S / Multi-service 	**1000 	1000
-		S0 / F0 	**100 	300				
+Tier 	Requests / Second 	Requests / Minute
+S / Multi-service 	**1000 	1000
+S0 / F0 	**100 	300				
 
 ## REST API
 	
-		{Endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
-		
-		Analyze Conversations Endpoint
+{Endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
 
-			**POST** {Endpoint}/**language/:analyze-conversations?api-version=2024-11-01**
+Analyze Conversations Endpoint
 
-		Analyze Text Endpoint
+	**POST** {Endpoint}/**language/:analyze-conversations?api-version=2024-11-01**
 
-			**POST** {Endpoint}/**language/:analyze-text?api-version=2025-11-01**
+Analyze Text Endpoint
 
-			Analyze Text Input Types
-			
-			Name 	Description
-			**AnalyzeTextEntityLinkingInput** 	Contains the analyze text entity linking input.
-			**AnalyzeTextEntityRecognitionInput** 	Represents the analyze text entity recognition task request.
-			**AnalyzeTextKeyPhraseExtractionInput** 	Contains the analyze text key phrase extraction task input.
-			**AnalyzeTextLanguageDetectionInput** 	Contains the language detection document analysis task input.
-			**AnalyzeTextPiiEntitiesRecognitionInput** 	Contains the analyze text PII entity recognition task input.
-			**AnalyzeTextSentimentAnalysisInput** 	Contains the analyze text sentiment analysis task input.
+	**POST** {Endpoint}/**language/:analyze-text?api-version=2025-11-01**
 
-		Question Answering - Get Answers Endpoint
+	Analyze Text Input Types
+	
+	Name 	Description
+	**AnalyzeTextEntityLinkingInput** 	Contains the analyze text entity linking input.
+	**AnalyzeTextEntityRecognitionInput** 	Represents the analyze text entity recognition task request.
+	**AnalyzeTextKeyPhraseExtractionInput** 	Contains the analyze text key phrase extraction task input.
+	**AnalyzeTextLanguageDetectionInput** 	Contains the language detection document analysis task input.
+	**AnalyzeTextPiiEntitiesRecognitionInput** 	Contains the analyze text PII entity recognition task input.
+	**AnalyzeTextSentimentAnalysisInput** 	Contains the analyze text sentiment analysis task input.
 
-			Answers the specified question using your knowledge base.
+Question Answering - Get Answers Endpoint
 
-				**POST** {Endpoint}/**language/:query-knowledgebases?api-version=2023-04-01&projectName={projectName}&deploymentName={deploymentName}**
+	Answers the specified question using your knowledge base.
 
-		Question Answering - Get Answers From Text Endpoint
+		**POST** {Endpoint}/**language/:query-knowledgebases?api-version=2023-04-01&projectName={projectName}&deploymentName={deploymentName}**
 
-			Answers the specified question using the provided text in the body.
+Question Answering - Get Answers From Text Endpoint
 
-				**POST** {Endpoint}/**language/:query-text?api-version=2023-04-01**
+	Answers the specified question using the provided text in the body.
+
+		**POST** {Endpoint}/**language/:query-text?api-version=2023-04-01**
 	
 ## Python SDK
 	
-		Custom Question Answering Example
-			
-			Used Classes: 
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.ai.language.questionanswering import **QuestionAnsweringClient
-					from azure.ai.language.questionanswering import **models as qna
-			
-			Used Methods:
-					
-					client = **QuestionAnsweringClient(endpoint, credential)
-					with client:
-						question="How long does it takes to charge a surface?"
-						input = **qna.AnswersFromTextOptions(
-							**question=question,
-							**text_documents=[
-								"Power and charging. It takes two to four hours to charge the Surface Pro 4 battery fully from an empty state. " +
-								"It can take longer if you're using your Surface for power-intensive activities like gaming or video streaming while you're charging it.",
-								"You can use the USB port on your Surface Pro 4 power supply to charge other devices, like a phone, while your Surface charges. " +
-								"The USB port on the power supply is only for charging, not for data transfer. If you want to use a USB device, plug it into the USB port on your Surface.",
-							**]
-						**)
+Custom Question Answering Example
 
+Used Classes: 
+		from azure.core.credentials import **AzureKeyCredential
+		from azure.ai.language.questionanswering import **QuestionAnsweringClient
+		from azure.ai.language.questionanswering import **models as qna
 
-						output = **client.get_answers_from_text(input)
-						...
-						
-						
-		Entity Linking Example
+Used Methods:
 		
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-					
-			Used Methods:
-					
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint, 
-							**credential=ta_credential)
-							
-					documents = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
-					to develop and sell BASIC interpreters for the Altair 8800. 
-					During his career at Microsoft, Gates held the positions of chairman,
-					chief executive officer, president and chief software architect, 
-					while also being the largest individual shareholder until May 2014."""]
-					
-					result = **text_analytics_client.recognize_linked_entities(documents = documents)[0]
-		
-		Language Detection
-			
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint,
-							**credential=ta_credential)
-							
-					
-					documents = ["Ce document est rédigé en Français."]
-					response = **text_analytics_client.detect_language(documents = documents, country_hint = 'us')[0]
-					print("Language: ", response.primary_language.name)
-		
-		Key Phrase Extraction
-		
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint, 
-							**credential=ta_credential)
-							
-					documents = ["Dr. Smith has a very modern medical office, and she has great staff."]
+		client = **QuestionAnsweringClient(endpoint, credential)
+		with client:
+			question="How long does it takes to charge a surface?"
+			input = **qna.AnswersFromTextOptions(
+				**question=question,
+				**text_documents=[
+					"Power and charging. It takes two to four hours to charge the Surface Pro 4 battery fully from an empty state. " +
+					"It can take longer if you're using your Surface for power-intensive activities like gaming or video streaming while you're charging it.",
+					"You can use the USB port on your Surface Pro 4 power supply to charge other devices, like a phone, while your Surface charges. " +
+					"The USB port on the power supply is only for charging, not for data transfer. If you want to use a USB device, plug it into the USB port on your Surface.",
+				**]
+			**)
 
-					response = **text_analytics_client.extract_key_phrases(documents = documents)[0])
 
-		Detecting named entities (NER) Example
+			output = **client.get_answers_from_text(input)
+			...
 			
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
 			
-			Used Methods:
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint, 
-							**credential=ta_credential)
-					
-					documents = ["I had a wonderful trip to Seattle last week."]
-					
-					result = **text_analytics_client.recognize_entities(documents = documents)[0]
+Entity Linking Example
 
-		Detect Personally Identifiable Information (PII) Example
-			
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint, 
-							**credential=ta_credential)
-					
-					documents = [
-						"The employee's SSN is 859-98-0987.",
-						"The employee's phone number is 555-555-5555."
-					]
-					
-					response = **text_analytics_client.recognize_pii_entities(documents, language="en")
-					
-					result = [doc for doc in response if not doc.is_error]
-			
-	
-		Sentiment analysis and opinion mining Example
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
 		
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					
-					ta_credential = **AzureKeyCredential(language_key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=language_endpoint, 
-							**credential=ta_credential)
-							
-					documents = [
-						"The food and service were unacceptable. The concierge was nice, however."
-					]
-
-					result = **client.analyze_sentiment(documents, show_opinion_mining=True)
-					
-		Text, document and conversation summarization Example
+Used Methods:
 		
-			Used Classes:
-			
-					from azure.ai.textanalytics import (**TextAnalyticsClient , ExtractiveSummaryAction)
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					
-					ta_credential = **AzureKeyCredential(key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=endpoint, 
-							**credential=ta_credential)
-					
-					document = [
-						"The extractive summarization feature uses natural language processing techniques to locate key sentences in an unstructured text document. "
-						"These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. " 
-						"They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. "
-						"Extractive summarization supports several languages. It is based on pretrained multilingual transformer models, part of our quest for holistic representations. "
-						"It draws its strength from transfer learning across monolingual and harness the shared nature of languages to produce models of improved quality and efficiency. "
-					]
-
-					poller = text_analytics_client.**begin_analyze_actions(
-						**document,
-						**actions=[
-						**	ExtractiveSummaryAction(max_sentence_count=4)
-						**],
-					**)
-
-					document_results = poller.**result()
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint, 
+				**credential=ta_credential)
+				
+		documents = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+		to develop and sell BASIC interpreters for the Altair 8800. 
+		During his career at Microsoft, Gates held the positions of chairman,
+		chief executive officer, president and chief software architect, 
+		while also being the largest individual shareholder until May 2014."""]
 		
-		
-		Text Analytics for health example
-			
-			Used Classes:
-					from azure.ai.textanalytics import **TextAnalyticsClient
-					from azure.core.credentials import **AzureKeyCredential
-			
-			Used Methods:
-					
-					ta_credential = **AzureKeyCredential(key)
-					text_analytics_client = **TextAnalyticsClient(
-							**endpoint=endpoint, 
-							**credential=ta_credential)
-			
-					documents = [
-						"""
-						Patient needs to take 50 mg of ibuprofen.
-						"""
-					]
+		result = **text_analytics_client.recognize_linked_entities(documents = documents)[0]
 
-					poller = text_analytics_client.**begin_analyze_healthcare_entities(documents)
-					result = poller.result()
+Language Detection
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint,
+				**credential=ta_credential)
+				
+		
+		documents = ["Ce document est rédigé en Français."]
+		response = **text_analytics_client.detect_language(documents = documents, country_hint = 'us')[0]
+		print("Language: ", response.primary_language.name)
+
+Key Phrase Extraction
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint, 
+				**credential=ta_credential)
+				
+		documents = ["Dr. Smith has a very modern medical office, and she has great staff."]
+
+		response = **text_analytics_client.extract_key_phrases(documents = documents)[0])
+
+Detecting named entities (NER) Example
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint, 
+				**credential=ta_credential)
+		
+		documents = ["I had a wonderful trip to Seattle last week."]
+		
+		result = **text_analytics_client.recognize_entities(documents = documents)[0]
+
+Detect Personally Identifiable Information (PII) Example
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint, 
+				**credential=ta_credential)
+		
+		documents = [
+			"The employee's SSN is 859-98-0987.",
+			"The employee's phone number is 555-555-5555."
+		]
+		
+		response = **text_analytics_client.recognize_pii_entities(documents, language="en")
+		
+		result = [doc for doc in response if not doc.is_error]
+
+
+Sentiment analysis and opinion mining Example
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		
+		ta_credential = **AzureKeyCredential(language_key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=language_endpoint, 
+				**credential=ta_credential)
+				
+		documents = [
+			"The food and service were unacceptable. The concierge was nice, however."
+		]
+
+		result = **client.analyze_sentiment(documents, show_opinion_mining=True)
+		
+Text, document and conversation summarization Example
+
+Used Classes:
+
+		from azure.ai.textanalytics import (**TextAnalyticsClient , ExtractiveSummaryAction)
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		
+		ta_credential = **AzureKeyCredential(key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=endpoint, 
+				**credential=ta_credential)
+		
+		document = [
+			"The extractive summarization feature uses natural language processing techniques to locate key sentences in an unstructured text document. "
+			"These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. " 
+			"They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. "
+			"Extractive summarization supports several languages. It is based on pretrained multilingual transformer models, part of our quest for holistic representations. "
+			"It draws its strength from transfer learning across monolingual and harness the shared nature of languages to produce models of improved quality and efficiency. "
+		]
+
+		poller = text_analytics_client.**begin_analyze_actions(
+			**document,
+			**actions=[
+			**	ExtractiveSummaryAction(max_sentence_count=4)
+			**],
+		**)
+
+		document_results = poller.**result()
+
+
+Text Analytics for health example
+
+Used Classes:
+		from azure.ai.textanalytics import **TextAnalyticsClient
+		from azure.core.credentials import **AzureKeyCredential
+
+Used Methods:
+		
+		ta_credential = **AzureKeyCredential(key)
+		text_analytics_client = **TextAnalyticsClient(
+				**endpoint=endpoint, 
+				**credential=ta_credential)
+
+		documents = [
+			"""
+			Patient needs to take 50 mg of ibuprofen.
+			"""
+		]
+
+		poller = text_analytics_client.**begin_analyze_healthcare_entities(documents)
+		result = poller.result()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -829,135 +829,135 @@
 	
 ## Core Capabilities
 	
-		**Speech to Text
+**Speech to Text
 
-			Real-time transcription for streaming audio
-			Fast transcription for recorded files
-			Batch transcription for large audio volumes
-			Support for custom speech models to improve accuracy in noisy or domain-specific audio
+	Real-time transcription for streaming audio
+	Fast transcription for recorded files
+	Batch transcription for large audio volumes
+	Support for custom speech models to improve accuracy in noisy or domain-specific audio
 
-		**Text to Speech
+**Text to Speech
 
-			Neural voices with human-like quality
-			Fine-grained control using SSML
-			Standard voices (out of the box)
-			Custom neural voices for brand-specific experiences (private and unique)
+	Neural voices with human-like quality
+	Fine-grained control using SSML
+	Standard voices (out of the box)
+	Custom neural voices for brand-specific experiences (private and unique)
 
-		**Speech Translation
+**Speech Translation
 
-			Real-time multilingual translation
-			Supports speech-to-speech and speech-to-text scenarios
+	Real-time multilingual translation
+	Supports speech-to-speech and speech-to-text scenarios
 
 ## What is SSML?
 
-		SSML is an XML-based language used to control how text is spoken in text-to-speech, such as pitch, speed, volume, pronunciation, and voice style.			
-					
-		
-		SSML Roles and Styles — Examples
-		
-			```xml
-				<mstts:express-as style="cheerful">
-					I'm really happy to see you today!
-				</mstts:express-as>
+SSML is an XML-based language used to control how text is spoken in text-to-speech, such as pitch, speed, volume, pronunciation, and voice style.			
 			
-				<mstts:express-as role="SeniorMale" style="calm">
-					Welcome back. It’s good to see you again.
-				</mstts:express-as>
-			```
-		
-		Style Degree Example
 
-			Adjust how strong the emotion sounds:
-			
-			```xml
-				<mstts:express-as style="sad" styledegree="2">
-					I'm really going to miss you.
-				</mstts:express-as>
-			```
+SSML Roles and Styles — Examples
+
+```xml
+	<mstts:express-as style="cheerful">
+		I'm really happy to see you today!
+	</mstts:express-as>
+
+	<mstts:express-as role="SeniorMale" style="calm">
+		Welcome back. It’s good to see you again.
+	</mstts:express-as>
+```
+
+Style Degree Example
+
+Adjust how strong the emotion sounds:
+
+```xml
+	<mstts:express-as style="sad" styledegree="2">
+		I'm really going to miss you.
+	</mstts:express-as>
+	```
 		
 ## Rest API
 	
-		Speech to Text from file Endpoint
-			
-			curl --location --request **POST** "https://%SPEECH_REGION%.**stt**.speech.microsoft.com/**speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed" ^
-			--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
-			--header "Content-Type: audio/wav" ^
-			--data-binary "@YourAudioFile.wav"
-		
+Speech to Text from file Endpoint
+	
+	curl --location --request **POST** "https://%SPEECH_REGION%.**stt**.speech.microsoft.com/**speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed" ^
+	--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
+	--header "Content-Type: audio/wav" ^
+	--data-binary "@YourAudioFile.wav"
 
-		Text to Speech to a file Endpoint
-			
-			curl --location --request **POST** "https://%SPEECH_REGION%.**tts**.speech.microsoft.com/**cognitiveservices/v1" ^
-			--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
-			--header "Content-Type: application/ssml+xml" ^
-			--header "X-Microsoft-OutputFormat: audio-16khz-128kbitrate-mono-mp3" ^
-			--header "User-Agent: curl" ^
-			--data-raw "**<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='en-US-Ava:DragonHDLatestNeural'>my voice is my passport verify me</voice></speak>**" --output output.mp3
+
+Text to Speech to a file Endpoint
+	
+	curl --location --request **POST** "https://%SPEECH_REGION%.**tts**.speech.microsoft.com/**cognitiveservices/v1" ^
+	--header "Ocp-Apim-Subscription-Key: %SPEECH_KEY%" ^
+	--header "Content-Type: application/ssml+xml" ^
+	--header "X-Microsoft-OutputFormat: audio-16khz-128kbitrate-mono-mp3" ^
+	--header "User-Agent: curl" ^
+	--data-raw "**<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='en-US-Ava:DragonHDLatestNeural'>my voice is my passport verify me</voice></speak>**" --output output.mp3
 			
 			
 			
 ## Python SDK
 	
-		Speech to Text Example
-			 
-			Used Classes:
-					import **azure.cognitiveservices.speech** as speechsdk
+Speech to Text Example
+	 
+	Used Classes:
+			import **azure.cognitiveservices.speech** as speechsdk
+	
+	Used Methods:
 			
-			Used Methods:
-					
-					speech_config = **speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
-					**speech_config.speech_recognition_language="en-US"
+			speech_config = **speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
+			**speech_config.speech_recognition_language="en-US"
 
-					audio_config = **speechsdk.audio.AudioConfig(use_default_microphone=True)
-					speech_recognizer = **speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+			audio_config = **speechsdk.audio.AudioConfig(use_default_microphone=True)
+			speech_recognizer = **speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
-					print("Speak into your microphone.")
-					speech_recognition_result = **speech_recognizer.recognize_once_async().get()
+			print("Speak into your microphone.")
+			speech_recognition_result = **speech_recognizer.recognize_once_async().get()
+	
+Text to Speech Example
+	
+	Used Classes:
+			import **azure.cognitiveservices.speech** as speechsdk
+	
+	Used Methods:
 			
-		Text to Speech Example
+			# This example requires environment variables named "SPEECH_KEY" and "ENDPOINT"
+			# Replace with your own subscription key and endpoint, the endpoint is like : "https://YourServiceRegion.api.cognitive.microsoft.com"
+			speech_config = **speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
+			audio_config = **speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
+
+			# The neural multilingual voice can speak different languages based on the input text.
+			speech_config.**speech_synthesis_voice_name='en-US-Ava:DragonHDLatestNeural'
+
+			speech_synthesizer = **speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+
+			# Get text from the console and synthesize to the default speaker.
+			print("Enter some text that you want to speak >")
+			text = input()
+
+			speech_synthesis_result = **speech_synthesizer.speak_text_async(text).get()
+
+Speech translation
+
+	Used Classes:
+			import **azure.cognitiveservices.speech** as speechsdk
+
+	
+	Used Methods:
 			
-			Used Classes:
-					import **azure.cognitiveservices.speech** as speechsdk
-			
-			Used Methods:
-					
-					# This example requires environment variables named "SPEECH_KEY" and "ENDPOINT"
-					# Replace with your own subscription key and endpoint, the endpoint is like : "https://YourServiceRegion.api.cognitive.microsoft.com"
-					speech_config = **speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
-					audio_config = **speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
+			# This example requires environment variables named "SPEECH_KEY" and "ENDPOINT"
+			# Replace with your own subscription key and endpoint, the endpoint is like : "https://YourServiceRegion.api.cognitive.microsoft.com"
+			speech_translation_config = **speechsdk.translation.SpeechTranslationConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
+			**speech_translation_config.speech_recognition_language="en-US"
 
-					# The neural multilingual voice can speak different languages based on the input text.
-					speech_config.**speech_synthesis_voice_name='en-US-Ava:DragonHDLatestNeural'
+			to_language ="it"
+			**speech_translation_config.add_target_language(to_language)
 
-					speech_synthesizer = **speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+			audio_config = **speechsdk.audio.AudioConfig(use_default_microphone=True)
+			translation_recognizer = **speechsdk.translation.TranslationRecognizer(translation_config=speech_translation_config, audio_config=audio_config)
 
-					# Get text from the console and synthesize to the default speaker.
-					print("Enter some text that you want to speak >")
-					text = input()
-
-					speech_synthesis_result = **speech_synthesizer.speak_text_async(text).get()
-		
-		Speech translation
-		
-			Used Classes:
-					import **azure.cognitiveservices.speech** as speechsdk
-		
-			
-			Used Methods:
-					
-					# This example requires environment variables named "SPEECH_KEY" and "ENDPOINT"
-					# Replace with your own subscription key and endpoint, the endpoint is like : "https://YourServiceRegion.api.cognitive.microsoft.com"
-					speech_translation_config = **speechsdk.translation.SpeechTranslationConfig(subscription=os.environ.get('SPEECH_KEY'), endpoint=os.environ.get('ENDPOINT'))
-					**speech_translation_config.speech_recognition_language="en-US"
-
-					to_language ="it"
-					**speech_translation_config.add_target_language(to_language)
-
-					audio_config = **speechsdk.audio.AudioConfig(use_default_microphone=True)
-					translation_recognizer = **speechsdk.translation.TranslationRecognizer(translation_config=speech_translation_config, audio_config=audio_config)
-
-					print("Speak into your microphone.")
-					translation_recognition_result = **translation_recognizer.recognize_once_async().get()
+			print("Speak into your microphone.")
+			translation_recognition_result = **translation_recognizer.recognize_once_async().get()
 					
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -968,61 +968,61 @@
 	
 ## Key Capabilities
 
-		**Text Translation
-			Supports real-time multilingual translation.
-			Latest 2025-10-01-preview introduces optional large language model (LLM) selection, adaptive custom translation, and enhanced request parameters.
-			Available via REST APIs, SDKs, the Foundry (classic) portal, and containers.
+**Text Translation
+	Supports real-time multilingual translation.
+	Latest 2025-10-01-preview introduces optional large language model (LLM) selection, adaptive custom translation, and enhanced request parameters.
+	Available via REST APIs, SDKs, the Foundry (classic) portal, and containers.
 
-		**Document Translation
-			Asynchronous (Batch): Translates large or complex document sets while preserving structure and formatting, using Azure Blob Storage.
-			Synchronous (Single file): Translates individual documents (optionally with glossaries) without requiring Blob Storage, returning results directly.
+**Document Translation
+	Asynchronous (Batch): Translates large or complex document sets while preserving structure and formatting, using Azure Blob Storage.
+	Synchronous (Single file): Translates individual documents (optionally with glossaries) without requiring Blob Storage, returning results directly.
 
-		**Custom Translator
-			Enables creation of customized translation models for domain- or industry-specific terminology, style, and language usage.
-			Supports custom dictionaries for phrases or sentences.
+**Custom Translator
+	Enables creation of customized translation models for domain- or industry-specific terminology, style, and language usage.
+	Supports custom dictionaries for phrases or sentences.
 
 	
 ## Asynchronous (Batch) Document Translation: Supported document and glossary formats
 
-		Batch document formats
-			Supports common document types including:
-				**PDF (with OCR for scanned PDFs)
-				**Microsoft Office files (Word, Excel, PowerPoint, Outlook)
-				**OpenDocument formats
-				**Markdown
-				**HTML and MHTML
-				**Images (JPEG, PNG, BMP, WebP – preview)
-				**CSV, TSV/TAB
-				**TXT and RTF
-				**XLIFF
+Batch document formats
+	Supports common document types including:
+		**PDF (with OCR for scanned PDFs)
+		**Microsoft Office files (Word, Excel, PowerPoint, Outlook)
+		**OpenDocument formats
+		**Markdown
+		**HTML and MHTML
+		**Images (JPEG, PNG, BMP, WebP – preview)
+		**CSV, TSV/TAB
+		**TXT and RTF
+		**XLIFF
 
-		Legacy format handling
-			Some source formats are converted during translation:
-				**.doc, .odt, .rtf → .docx
-				**.xls, .ods → .xlsx
-				**.ppt, .odp → .pptx
+Legacy format handling
+	Some source formats are converted during translation:
+		**.doc, .odt, .rtf → .docx
+		**.xls, .ods → .xlsx
+		**.ppt, .odp → .pptx
 
-		Glossary formats
-			Supported glossary file types:
-				**CSV
-				**TSV/TAB
-				**XLIFF (XLF, XLIFF)
+Glossary formats
+	Supported glossary file types:
+		**CSV
+		**TSV/TAB
+		**XLIFF (XLF, XLIFF)
 
 ## Synchronous document and glossary formats
 
-		Synchronous document formats
-			Supported file types include:
-				**Plain text (.txt)
-				**Tab-separated values (.tsv, .tab)
-				**Comma-separated values (.csv)
-				**HTML (.html, .htm)
-				**MHTML (.mhtml, .mht)
-				**Microsoft Office formats:
-					**PowerPoint (.pptx)
-					**Excel (.xlsx)
-					**Word (.docx)
-					**Outlook messages (.msg)
-				**XML Localization Interchange formats (.xlf, .xliff)
+Synchronous document formats
+	Supported file types include:
+		**Plain text (.txt)
+		**Tab-separated values (.tsv, .tab)
+		**Comma-separated values (.csv)
+		**HTML (.html, .htm)
+		**MHTML (.mhtml, .mht)
+		**Microsoft Office formats:
+			**PowerPoint (.pptx)
+			**Excel (.xlsx)
+			**Word (.docx)
+			**Outlook messages (.msg)
+		**XML Localization Interchange formats (.xlf, .xliff)
 				
 	
 ## Text Translation Limitations
@@ -1032,77 +1032,77 @@
 		Example: 3,000 characters to 3 languages = 9,000 characters counted.
 
 ## Array Element and Character Limits per Operation
-		| Operation              | Max Array Element Size                        | Max Array Elements | Max Request Size (characters) |
-		|------------------------|-----------------------------------------------|--------------------|-------------------------------|
-		| Translate              | **50,000                                        | 1,000              | 50,000                        |
-		| Transliterate          | **5,000                                         | 10                 | 5,000                         |
-		| Detect                 | **50,000                                        | 100                | 50,000                        |
-		| BreakSentence          | **50,000                                        | 100                | 50,000                        |
-		| Dictionary Lookup      | **100                                           | 10                 | 1,000                         |
-		| Dictionary Examples    | **100 text + 100 translation (200 total)        | 10                 | 2,000                         |
+| Operation              | Max Array Element Size                        | Max Array Elements | Max Request Size (characters) |
+|------------------------|-----------------------------------------------|--------------------|-------------------------------|
+| Translate              | **50,000                                        | 1,000              | 50,000                        |
+| Transliterate          | **5,000                                         | 10                 | 5,000                         |
+| Detect                 | **50,000                                        | 100                | 50,000                        |
+| BreakSentence          | **50,000                                        | 100                | 50,000                        |
+| Dictionary Lookup      | **100                                           | 10                 | 1,000                         |
+| Dictionary Examples    | **100 text + 100 translation (200 total)        | 10                 | 2,000                         |
 
 			
-		## REST API
-		
-		Languages List Endpoint
+## REST API
 
-			Returns a list of languages supported by Translate, Transliterate, and Dictionary Lookup operations. This request doesn't require authentication; just copy and paste the following GET request into your favorite REST API tool or browser:
+Languages List Endpoint
 
-			**https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
-		
-		Translate to multiple languages Endpoint
+	Returns a list of languages supported by Translate, Transliterate, and Dictionary Lookup operations. This request doesn't require authentication; just copy and paste the following GET request into your favorite REST API tool or browser:
 
-			curl -X **POST** "**https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de**" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
+	**https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
+
+Translate to multiple languages Endpoint
+
+	curl -X **POST** "**https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de**" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 
 
-		Transliterate Endpoint
+Transliterate Endpoint
 
-			The Text transliteration API maps your source language script or alphabet to a target language script or alphabet.
+	The Text transliteration API maps your source language script or alphabet to a target language script or alphabet.
 
-				**POST https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
-		
-		Detect Endpoint
+		**POST https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
-			**POST https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
-		
-		Dictionary Lookup Endpoint
-		
-			This example shows how to look up alternative translations in Spanish of the English term fly
+Detect Endpoint
 
-				curl -X **POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es"** -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
-		
-		Dictionary Examples Endpoint
-		
-			Provides examples that show how terms in the dictionary are used in context. This operation is used in tandem with Dictionary lookup.
+	**POST https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
-				curl -X **POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es"** -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
-		
-		Translate Document (Asynchron)
+Dictionary Lookup Endpoint
 
-			**POST https://{your-document-translation-endpoint}/translator/document:translate?api-version=2024-05-01&sourceLanguage=en&targetLanguage=fr
+	This example shows how to look up alternative translations in Spanish of the English term fly
+
+		curl -X **POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es"** -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
+
+Dictionary Examples Endpoint
+
+	Provides examples that show how terms in the dictionary are used in context. This operation is used in tandem with Dictionary lookup.
+
+		curl -X **POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es"** -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
+
+Translate Document (Asynchron)
+
+	**POST https://{your-document-translation-endpoint}/translator/document:translate?api-version=2024-05-01&sourceLanguage=en&targetLanguage=fr
 
 ## Python SDK
 	
-		Used Classes: 
-				
-				from azure.ai.translation.text import **TextTranslationClient, TranslatorCredential
-				from azure.ai.translation.text.models import **InputTextItem
+Used Classes: 
 		
-		Used Methods:
-				
-				credential = **TranslatorCredential(key, region)
-				text_translator = **TextTranslationClient(endpoint=endpoint, credential=credential)
-				
-				source_language = "en"
-				target_languages = ["es", "it"]
-				input_text_elements = [ InputTextItem(text = "This is a test") ]
+		from azure.ai.translation.text import **TextTranslationClient, TranslatorCredential
+		from azure.ai.translation.text.models import **InputTextItem
 
-				response = **text_translator.translate(content = input_text_elements, to = target_languages, from_parameter = source_language)
-				translation = response[0] if response else None
+Used Methods:
+		
+		credential = **TranslatorCredential(key, region)
+		text_translator = **TextTranslationClient(endpoint=endpoint, credential=credential)
+		
+		source_language = "en"
+		target_languages = ["es", "it"]
+		input_text_elements = [ InputTextItem(text = "This is a test") ]
 
-				if translation:
-					for translated_text in translation.translations:
-						print(f"Text was translated to: '{translated_text.to}' and the result is: '{translated_text.text}'.")
+		response = **text_translator.translate(content = input_text_elements, to = target_languages, from_parameter = source_language)
+		translation = response[0] if response else None
+
+		if translation:
+			for translated_text in translation.translations:
+				print(f"Text was translated to: '{translated_text.to}' and the result is: '{translated_text.text}'.")
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1176,168 +1176,168 @@
 
 ## Image Requirements
 
-		To be analyzed by Azure Vision, **images** must:
+To be analyzed by Azure Vision, **images** must:
 
-			Be in **JPEG, PNG, GIF, or BMP format
-			Be smaller than **4 MB
-			Have dimensions **greater than 50 × 50 pixels
-				For the **Read** (OCR) API: **50 × 50 up to 10,000 × 10,000 pixels
+	Be in **JPEG, PNG, GIF, or BMP format
+	Be smaller than **4 MB
+	Have dimensions **greater than 50 × 50 pixels
+		For the **Read** (OCR) API: **50 × 50 up to 10,000 × 10,000 pixels
 				
 	
 ## REST API
 	
-		{endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
-		
-		Face Detection Operations - Detect Endpoint
+{endpoint} : The Cognitive Services endpoint, including protocol and hostname (for example, **https://RESOURCE_NAME.cognitiveservices.azure.com**).
 
-			**POST {endpoint}/face/{apiVersion}/detect
+Face Detection Operations - Detect Endpoint
 
-		
-		Face Recognition Operations - Find Similar From Large Face List Endpoint
+	**POST {endpoint}/face/{apiVersion}/detect
 
-			**POST {endpoint}/face/{apiVersion}/findsimilars
 
-		Face Recognition Operations - Verify Face To Face Endpoint
+Face Recognition Operations - Find Similar From Large Face List Endpoint
 
-			Verify whether two faces belong to a same person.
+	**POST {endpoint}/face/{apiVersion}/findsimilars
 
-				**POST {endpoint}/face/{apiVersion}/verify
+Face Recognition Operations - Verify Face To Face Endpoint
 
-		Face Recognition Operations - Identify From Large Person Group Endpoint
+	Verify whether two faces belong to a same person.
 
-			**POST {endpoint}/face/{apiVersion}/identify
+		**POST {endpoint}/face/{apiVersion}/verify
 
-		Image Analysis - Analyze Image Endpoint
+Face Recognition Operations - Identify From Large Person Group Endpoint
 
-			**POST /imageanalysis:analyze?api-version=2023-04-01-preview
+	**POST {endpoint}/face/{apiVersion}/identify
 
-		OCR Read Endpoint
+Image Analysis - Analyze Image Endpoint
 
-			**POST {Endpoint}/vision/v3.1/read/analyze
+	**POST /imageanalysis:analyze?api-version=2023-04-01-preview
 
-		Tag Image Endpoint
+OCR Read Endpoint
 
-			This operation generates a list of words, or tags, that are relevant to the content of the supplied image. The Computer Vision API can return tags based on objects, living beings, scenery or actions found in images.
+	**POST {Endpoint}/vision/v3.1/read/analyze
 
-				**POST {Endpoint}/vision/v3.1/tag
+Tag Image Endpoint
 
-		Detect Objects Endpoint
+	This operation generates a list of words, or tags, that are relevant to the content of the supplied image. The Computer Vision API can return tags based on objects, living beings, scenery or actions found in images.
 
-			Performs object detection on the specified image. Two input methods are supported -- (1) Uploading an image or (2) specifying an image URL.
+		**POST {Endpoint}/vision/v3.1/tag
 
-				**POST {Endpoint}/vision/v3.1/detect
+Detect Objects Endpoint
+
+	Performs object detection on the specified image. Two input methods are supported -- (1) Uploading an image or (2) specifying an image URL.
+
+		**POST {Endpoint}/vision/v3.1/detect
 
 ## Python SDK
 	
-		OCR Read (v3.2 GA)Example
-		
-			Used Classes: 
-					from azure.cognitiveservices.vision.computervision import **ComputerVisionClient
-					from azure.cognitiveservices.vision.computervision.models import **OperationStatusCodes
-					from azure.cognitiveservices.vision.computervision.models import **VisualFeatureTypes
-					from msrest.authentication import **CognitiveServicesCredentials
-			
-			Used Methods: 
-					
-					# Get an image with text
-					read_image_url = "https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png"
+OCR Read (v3.2 GA)Example
 
-					# Call API with URL and raw response (allows you to get the operation location)
-					read_response = **computervision_client.read(read_image_url,  raw=True)
-			
-					# Get the operation location (URL with an ID at the end) from the response
-					read_operation_location = **read_response.headers["Operation-Location"]
-					# Grab the ID from the URL
-					operation_id = **read_operation_location.split("/")[-1]
-					
-					# Call the "GET" API and wait for it to retrieve the results 
-					while True:
-						read_result = **computervision_client.get_read_result(operation_id)
-						if read_result.status not in ['notStarted', 'running']:
-							break
-						time.sleep(1)
-					
-					# Print the detected text, line by line
-					if read_result.status == OperationStatusCodes.succeeded:
-						for text_result in read_result.analyze_result.read_results:
-							for line in text_result.lines:
-								print(line.text)
-								print(line.bounding_box)
-					print()
-					
-		Image Analysis (4.0) Example
-			
-			Used Classes: 
-					from azure.ai.vision.imageanalysis import **ImageAnalysisClient
-					from azure.ai.vision.imageanalysis.models import **VisualFeatures
-					from azure.core.credentials import **AzureKeyCredential
-			Used Methods :
-			
-					# Create an Image Analysis client
-					client = **ImageAnalysisClient(
-						**endpoint=endpoint,
-						**credential=AzureKeyCredential(key)
-					**)
-					
-					# Get a caption for the image. This will be a synchronously (blocking) call.
-					result = **client.analyze_from_url(
-						**image_url="https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png",
-						**visual_features=[VisualFeatures.CAPTION, VisualFeatures.READ],
-						**gender_neutral_caption=True,  # Optional (default is False)
-					**)
-			
-		
-		Face Example
-			
-			Used Classes: 
-					
-					from azure.core.credentials import **AzureKeyCredential
-					from azure.ai.vision.face import **FaceAdministrationClient, FaceClient
-					from azure.ai.vision.face.models import **FaceAttributeTypeRecognition04, FaceDetectionModel, FaceRecognitionModel, QualityForRecognition
+Used Classes: 
+from azure.cognitiveservices.vision.computervision import **ComputerVisionClient
+from azure.cognitiveservices.vision.computervision.models import **OperationStatusCodes
+from azure.cognitiveservices.vision.computervision.models import **VisualFeatureTypes
+from msrest.authentication import **CognitiveServicesCredentials
 
-			Used Methods :
-					
-					with **FaceAdministrationClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))** as face_admin_client, \
-					**FaceClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))** as face_client:
-					
-					# Create empty Large Person Group. Large Person Group ID must be lower case, alphanumeric, and/or with '-', '_'.					
-					face_admin_client.**large_person_group.create(
-						**large_person_group_id=LARGE_PERSON_GROUP_ID,
-						**name=LARGE_PERSON_GROUP_ID,
-						**recognition_model=FaceRecognitionModel.RECOGNITION04,
-					**)
-					
-					
-					# Define woman friend
-					woman = face_admin_client.**large_person_group.create_person(
-						****large_person_group_id=LARGE_PERSON_GROUP_ID,
-						**name="Woman",
-					**)
-					# Define man friend
-					man = face_admin_client.**large_person_group.create_person(
-						**large_person_group_id=LARGE_PERSON_GROUP_ID,
-						**name="Man",
-					**)
-					# Define child friend
-					child = face_admin_client.**large_person_group.create_person(
-						**large_person_group_id=LARGE_PERSON_GROUP_ID,
-						**name="Child",
-					**)
+Used Methods: 
 
-					detected_faces = face_client.**detect_from_url(
-						**url=image,
-						**detection_model=FaceDetectionModel.DETECTION03,
-						**recognition_model=FaceRecognitionModel.RECOGNITION04,
-						**return_face_id=True,
-						**return_face_attributes=[FaceAttributeTypeRecognition04.QUALITY_FOR_RECOGNITION],
-					**)
+# Get an image with text
+read_image_url = "https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png"
 
-					face_admin_client.**large_person_group.add_face_from_url(
-						**large_person_group_id=LARGE_PERSON_GROUP_ID,
-						**person_id=woman.person_id,
-						**url=image,
-						**detection_model=FaceDetectionModel.DETECTION03,
-					**)
+# Call API with URL and raw response (allows you to get the operation location)
+read_response = **computervision_client.read(read_image_url,  raw=True)
+
+# Get the operation location (URL with an ID at the end) from the response
+read_operation_location = **read_response.headers["Operation-Location"]
+# Grab the ID from the URL
+operation_id = **read_operation_location.split("/")[-1]
+
+# Call the "GET" API and wait for it to retrieve the results 
+while True:
+	read_result = **computervision_client.get_read_result(operation_id)
+	if read_result.status not in ['notStarted', 'running']:
+		break
+	time.sleep(1)
+
+# Print the detected text, line by line
+if read_result.status == OperationStatusCodes.succeeded:
+	for text_result in read_result.analyze_result.read_results:
+		for line in text_result.lines:
+			print(line.text)
+			print(line.bounding_box)
+print()
+
+Image Analysis (4.0) Example
+
+Used Classes: 
+from azure.ai.vision.imageanalysis import **ImageAnalysisClient
+from azure.ai.vision.imageanalysis.models import **VisualFeatures
+from azure.core.credentials import **AzureKeyCredential
+Used Methods :
+
+# Create an Image Analysis client
+client = **ImageAnalysisClient(
+	**endpoint=endpoint,
+	**credential=AzureKeyCredential(key)
+**)
+
+# Get a caption for the image. This will be a synchronously (blocking) call.
+result = **client.analyze_from_url(
+	**image_url="https://learn.microsoft.com/azure/ai-services/computer-vision/media/quickstarts/presentation.png",
+	**visual_features=[VisualFeatures.CAPTION, VisualFeatures.READ],
+	**gender_neutral_caption=True,  # Optional (default is False)
+**)
+
+
+Face Example
+
+Used Classes: 
+
+from azure.core.credentials import **AzureKeyCredential
+from azure.ai.vision.face import **FaceAdministrationClient, FaceClient
+from azure.ai.vision.face.models import **FaceAttributeTypeRecognition04, FaceDetectionModel, FaceRecognitionModel, QualityForRecognition
+
+Used Methods :
+
+with **FaceAdministrationClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))** as face_admin_client, \
+**FaceClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))** as face_client:
+
+# Create empty Large Person Group. Large Person Group ID must be lower case, alphanumeric, and/or with '-', '_'.					
+face_admin_client.**large_person_group.create(
+	**large_person_group_id=LARGE_PERSON_GROUP_ID,
+	**name=LARGE_PERSON_GROUP_ID,
+	**recognition_model=FaceRecognitionModel.RECOGNITION04,
+**)
+
+
+# Define woman friend
+woman = face_admin_client.**large_person_group.create_person(
+	****large_person_group_id=LARGE_PERSON_GROUP_ID,
+	**name="Woman",
+**)
+# Define man friend
+man = face_admin_client.**large_person_group.create_person(
+	**large_person_group_id=LARGE_PERSON_GROUP_ID,
+	**name="Man",
+**)
+# Define child friend
+child = face_admin_client.**large_person_group.create_person(
+	**large_person_group_id=LARGE_PERSON_GROUP_ID,
+	**name="Child",
+**)
+
+detected_faces = face_client.**detect_from_url(
+	**url=image,
+	**detection_model=FaceDetectionModel.DETECTION03,
+	**recognition_model=FaceRecognitionModel.RECOGNITION04,
+	**return_face_id=True,
+	**return_face_attributes=[FaceAttributeTypeRecognition04.QUALITY_FOR_RECOGNITION],
+**)
+
+face_admin_client.**large_person_group.add_face_from_url(
+	**large_person_group_id=LARGE_PERSON_GROUP_ID,
+	**person_id=woman.person_id,
+	**url=image,
+	**detection_model=FaceDetectionModel.DETECTION03,
+**)
 					
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
