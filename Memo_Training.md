@@ -1473,6 +1473,37 @@ Content Understanding is the recommended default for modern, scalable, and intel
 | Question Answering                       | https://pypi.org/project/azure-ai-language-questionanswering/1.1.0                 | **azure-ai-language-questionanswering**          |
 | Speech                                   | https://pypi.org/project/azure-cognitiveservices-speech/1.14.0                     | **azure-cognitiveservices-speech**               |
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Responsible AI Principles 
+
+## What is Responsible AI?
+
+**Responsible AI** is an approach to designing, building, and deploying AI systems that are **ethical, safe, trustworthy, and human-centered**. It ensures AI benefits people fairly, protects privacy, operates reliably, and keeps humans accountable for outcomes.
+
+### Core Principles of Responsible AI
+
+1. **Fairness & Inclusiveness**  
+   Reduce bias and ensure equal treatment across individuals and groups.
+
+2. **Reliability & Safety**  
+   Build systems that perform consistently, handle failures gracefully, and resist misuse.
+
+3. **Transparency**  
+   Make AI decisions understandable through model explanations and analysis tools.
+
+4. **Privacy & Security**  
+   Protect personal and business data and comply with privacy regulations.
+
+5. **Accountability**  
+   Ensure humans remain responsible for AI decisions and system behavior.
+
+6. **Decision Support**  
+   Use causal and counterfactual insights to help users make informed decisions.
+
+### In Practice
+
+Azure Machine Learning provides tools to assess fairness, explain models, protect data, monitor performance, and govern the full AI lifecycle to support responsible and trustworthy AI systems.
 
 
 
