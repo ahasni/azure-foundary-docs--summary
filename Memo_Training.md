@@ -1456,22 +1456,23 @@ Content Understanding is the recommended default for modern, scalable, and intel
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Python SDK Libraries 
 
-| Service                                      | Python Library (PyPI)                                                                 |
-|----------------------------------------------|---------------------------------------------------------------------------------------|
-| AI Agents                                    | https://pypi.org/project/azure-ai-agents/1.1.0                                         |
-| AI Projects                                  | https://pypi.org/project/azure-ai-projects/1.0.0                                       |
-| Azure AI Search                              | https://pypi.org/project/azure-search-documents/11.6.0                                 |
-| Azure AI Vision SDK                          | https://pypi.org/project/azure-ai-vision/0.15.1b1                                      |
-| Azure Content Understanding (Foundry Tools) | https://pypi.org/project/azure-ai-contentunderstanding/1.0.0b1                         |
-| Document Intelligence                       | https://pypi.org/project/azure-ai-documentintelligence/1.0.2                           |
-| Document Translation                        | https://pypi.org/project/azure-ai-translation-document/1.1.0                           |
-| Face                                        | https://pypi.org/project/azure-ai-vision-face/1.0.0b2                                  |
-| Text Translation                            | https://pypi.org/project/azure-ai-translation-text/1.0.1                               |
-| Text Analytics                              | https://pypi.org/project/azure-ai-textanalytics/5.3.0                                  |
-| Content Safety                              | https://pypi.org/project/azure-ai-contentsafety/1.0.0                                  |
-| Conversational Language Understanding       | https://pypi.org/project/azure-ai-language-conversations/1.1.0                         |
-| Question Answering                          | https://pypi.org/project/azure-ai-language-questionanswering/1.1.0                     |
-| Speech                                      | https://pypi.org/project/azure-cognitiveservices-speech/1.14.0                         |
+| Service                                   | Python Library URL                                                                 | **Python Library Name**                          |
+|-------------------------------------------|-------------------------------------------------------------------------------------|--------------------------------------------------|
+| AI Agents                                 | https://pypi.org/project/azure-ai-agents/1.1.0                                      | **azure-ai-agents**                              |
+| AI Projects                               | https://pypi.org/project/azure-ai-projects/1.0.0                                    | **azure-ai-projects**                            |
+| Azure AI Search                           | https://pypi.org/project/azure-search-documents/11.6.0                              | **azure-search-documents**                       |
+| Azure AI Vision SDK                       | https://pypi.org/project/azure-ai-vision/0.15.1b1                                   | **azure-ai-vision**                              |
+| Azure Content Understanding (Foundry)    | https://pypi.org/project/azure-ai-contentunderstanding/1.0.0b1                     | **azure-ai-contentunderstanding**                |
+| Document Intelligence                    | https://pypi.org/project/azure-ai-documentintelligence/1.0.2                       | **azure-ai-documentintelligence**                |
+| Document Translation                     | https://pypi.org/project/azure-ai-translation-document/1.1.0                       | **azure-ai-translation-document**                |
+| Face                                     | https://pypi.org/project/azure-ai-vision-face/1.0.0b2                               | **azure-ai-vision-face**                         |
+| Text Translation                         | https://pypi.org/project/azure-ai-translation-text/1.0.1                           | **azure-ai-translation-text**                    |
+| Text Analytics                           | https://pypi.org/project/azure-ai-textanalytics/5.3.0                              | **azure-ai-textanalytics**                       |
+| Content Safety                           | https://pypi.org/project/azure-ai-contentsafety/1.0.0                              | **azure-ai-contentsafety**                       |
+| Conversational Language Understanding    | https://pypi.org/project/azure-ai-language-conversations/1.1.0                     | **azure-ai-language-conversations**              |
+| Question Answering                       | https://pypi.org/project/azure-ai-language-questionanswering/1.1.0                 | **azure-ai-language-questionanswering**          |
+| Speech                                   | https://pypi.org/project/azure-cognitiveservices-speech/1.14.0                     | **azure-cognitiveservices-speech**               |
+
 
 
 
