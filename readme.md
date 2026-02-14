@@ -44,6 +44,15 @@ This repository contains documentation covering core Azure AI capabilities, serv
 
 ---
 
+## 📓Memo
+
+- **[Memo](/Memo_Training.md)**
+
+- **[Compact memo](/Compact_Memo.md)**  
+
+---
+
+
 📄 Start here to explore individual capabilities and understand how different AI services fit together.
 
 > **Note**  
